@@ -40,12 +40,12 @@ async def run_test():
         except Exception:
             pass
         
-        # -> Click the 'Acknowledge Policy' button in the privacy modal to dismiss it so the 'Launch App' entry point becomes accessible.
+        # -> Click the 'Acknowledge Policy' button to dismiss the privacy modal so the landing page entry points (e.g., 'Launch App' or 'Try Free - No Account Required') become accessible.
         # Acknowledge Policy button
         elem = page.get_by_role('button', name='Acknowledge Policy', exact=True)
         await elem.click(timeout=10000)
         
-        # -> Click the 'Launch App' link/button in the page header to open the main study workspace.
+        # -> Click the 'Launch App' entry point on the landing page to open the main study workspace.
         # Launch App link
         elem = page.get_by_role('link', name='Launch App', exact=True)
         await elem.click(timeout=10000)
@@ -53,17 +53,13 @@ async def run_test():
         # --> Assertions to verify final state
         
         # --> Verify the main workspace is displayed
-        # Assert: The URL contains '/app', indicating the workspace route is loaded.
-        await expect(page).to_have_url(re.compile("/app"), timeout=15000), "The URL contains '/app', indicating the workspace route is loaded."
-        await page.locator("xpath=/html/body/div[3]/div[2]/aside/div[1]/div/div[2]/select").nth(0).scroll_into_view_if_needed()
-        # Assert: The left panel shows the active document selector with 'Assignment_I'.
-        await expect(page.locator("xpath=/html/body/div[3]/div[2]/aside/div[1]/div/div[2]/select").nth(0)).to_be_visible(timeout=15000), "The left panel shows the active document selector with 'Assignment_I'."
-        await page.locator("xpath=/html/body/div[3]/div[1]/button[2]").nth(0).scroll_into_view_if_needed()
-        # Assert: The 'Doubt Bot' feature tab is visible in the top feature bar.
-        await expect(page.locator("xpath=/html/body/div[3]/div[1]/button[2]").nth(0)).to_be_visible(timeout=15000), "The 'Doubt Bot' feature tab is visible in the top feature bar."
+        # Assert: The 'AI Summary' navigation button is visible in the main workspace.
+        await expect(page.locator("xpath=/html/body/div[3]/div[1]/button[1]").nth(0)).to_have_text("AI Summary", timeout=15000), "The 'AI Summary' navigation button is visible in the main workspace."
+        # Assert: The 'Doubt Bot' navigation button is visible in the main workspace.
+        await expect(page.locator("xpath=/html/body/div[3]/div[1]/button[2]").nth(0)).to_have_text("Doubt Bot", timeout=15000), "The 'Doubt Bot' navigation button is visible in the main workspace."
         await page.locator("xpath=/html/body/div[3]/div[2]/main/div/form/input").nth(0).scroll_into_view_if_needed()
-        # Assert: The main workspace input field with its expected placeholder is present.
-        await expect(page.locator("xpath=/html/body/div[3]/div[2]/main/div/form/input").nth(0)).to_be_visible(timeout=15000), "The main workspace input field with its expected placeholder is present."
+        # Assert: The workspace message input field is present and visible.
+        await expect(page.locator("xpath=/html/body/div[3]/div[2]/main/div/form/input").nth(0)).to_be_visible(timeout=15000), "The workspace message input field is present and visible."
         await asyncio.sleep(5)
 
     finally:

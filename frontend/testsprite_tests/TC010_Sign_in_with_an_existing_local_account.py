@@ -40,62 +40,45 @@ async def run_test():
         except Exception:
             pass
         
-        # -> Click the 'Acknowledge Policy' button on the privacy & data protection modal to close the overlay and reveal the page behind it.
+        # -> Click the 'Acknowledge Policy' button in the Privacy & Data Protection modal to dismiss the dialog so the sign-in form can be accessed.
         # Acknowledge Policy button
         elem = page.get_by_role('button', name='Acknowledge Policy', exact=True)
         await elem.click(timeout=10000)
         
-        # -> Open the sign in form by clicking the 'Sign In' button in the page header.
+        # -> Open the Sign In form by clicking the 'Sign In' button in the page header.
         # Sign In button
         elem = page.get_by_role('button', name='Sign In', exact=True)
         await elem.click(timeout=10000)
         
-        # -> Fill the 'Email Address' field with 'test.student@example.com', fill the 'Password' field with a valid password, then click the 'Sign In' button to submit the form.
+        # -> Fill the email field with 'test.student@example.com', fill the password field with 'password123', and click the 'Sign In' button to submit the form.
         # name@university.edu email field
         elem = page.get_by_placeholder('name@university.edu', exact=True)
         await elem.wait_for(state="visible", timeout=10000)
         await elem.fill("test.student@example.com")
         
-        # -> Fill the 'Email Address' field with 'test.student@example.com', fill the 'Password' field with a valid password, then click the 'Sign In' button to submit the form.
+        # -> Fill the email field with 'test.student@example.com', fill the password field with 'password123', and click the 'Sign In' button to submit the form.
         # •••••••• password field
         elem = page.get_by_placeholder('••••••••', exact=True)
         await elem.wait_for(state="visible", timeout=10000)
         await elem.fill("password123")
         
-        # -> Fill the 'Email Address' field with 'test.student@example.com', fill the 'Password' field with a valid password, then click the 'Sign In' button to submit the form.
+        # -> Fill the email field with 'test.student@example.com', fill the password field with 'password123', and click the 'Sign In' button to submit the form.
         # Sign In button
         elem = page.get_by_text('Email Address', exact=True).locator("xpath=ancestor-or-self::*[.//button][1]").get_by_role('button', name='Sign In', exact=True)
         await elem.click(timeout=10000)
         
-        # -> Click the 'Launch App' link/button in the page header to open the main workspace and verify the workspace loads.
-        # Launch App link
-        elem = page.get_by_role('link', name='Launch App', exact=True)
-        await elem.click(timeout=10000)
+        # --> Assertions to verify final state
         
-        # -> Click the 'Launch App' button in the header to open the main workspace and verify the main workspace content is displayed.
-        # Launch App link
-        elem = page.get_by_role('link', name='Launch App', exact=True)
-        await elem.click(timeout=10000)
-        
-        # -> Click the 'Launch App' button in the page header to open the main workspace and confirm the workspace UI is displayed (e.g., workspace header or editor).
-        # Launch App link
-        elem = page.get_by_role('link', name='Launch App', exact=True)
-        await elem.click(timeout=10000)
-        
-        # -> click
-        # Launch App link
-        elem = page.get_by_role('link', name='Launch App', exact=True)
-        await elem.click(timeout=10000)
-        
-        # -> Click the 'Try Free - No Account Required' button on the landing page to attempt to open the main workspace via an alternative route.
-        # rocket_launch Try Free - No Account Required link
-        elem = page.get_by_role('link', name='rocket_launch Try Free - No Account Required', exact=True)
-        await elem.click(timeout=10000)
-        
-        # --> Test passed — verified by AI agent
-        frame = context.pages[-1]
-        current_url = await frame.evaluate("() => window.location.href")
-        assert current_url is not None, "Test completed successfully"
+        # --> Verify the main workspace is displayed
+        await page.locator("xpath=/html/body/div[3]/div[1]/button[1]").nth(0).scroll_into_view_if_needed()
+        # Assert: The AI Summary tab is visible in the workspace.
+        await expect(page.locator("xpath=/html/body/div[3]/div[1]/button[1]").nth(0)).to_be_visible(timeout=15000), "The AI Summary tab is visible in the workspace."
+        await page.locator("xpath=/html/body/div[3]/div[1]/button[2]").nth(0).scroll_into_view_if_needed()
+        # Assert: The Doubt Bot tab is visible in the workspace.
+        await expect(page.locator("xpath=/html/body/div[3]/div[1]/button[2]").nth(0)).to_be_visible(timeout=15000), "The Doubt Bot tab is visible in the workspace."
+        await page.locator("xpath=/html/body/div[3]/div[2]/main/div/form/input").nth(0).scroll_into_view_if_needed()
+        # Assert: The workspace question input is visible, confirming the main workspace is displayed.
+        await expect(page.locator("xpath=/html/body/div[3]/div[2]/main/div/form/input").nth(0)).to_be_visible(timeout=15000), "The workspace question input is visible, confirming the main workspace is displayed."
         await asyncio.sleep(5)
 
     finally:

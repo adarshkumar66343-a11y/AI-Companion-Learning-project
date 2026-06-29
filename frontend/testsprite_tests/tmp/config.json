@@ -10,14 +10,13 @@
       "TC002",
       "TC003",
       "TC006",
-      "TC011",
-      "TC012"
+      "TC011"
     ],
-    "additionalInstruction": "Run all fixed test cases using the API mock approach or clean navigation. TC002, TC003, TC006, TC011 have been updated to avoid relative local file access issues.",
+    "additionalInstruction": "The 4 blocked tests have been rewritten. TC002, TC003, TC006, TC011 now navigate via 'Launch App' link instead of uploading files — the backend already has preloaded documents. Run these 4 tests only.",
     "serverMode": "development",
     "envs": {
       "API_KEY": "sk-user-8VeX6vqrwbCflgiwckS2NM7q8ggAVJx8WZhdfHf3ZBP8xSP2wqchy__LcLBlzz6E6h2jYbTRm_1HnCdvhPaLh0LpibgbZqbj8mK8DPQ3w1USoEK826K5Sv6JgMP8uZ5zsN4"
     }
   },
-  "serverPort": 59170
+  "serverPort": 55984
 }

@@ -40,42 +40,55 @@ async def run_test():
         except Exception:
             pass
         
-        # -> Click the 'Acknowledge Policy' button in the privacy & data protection modal to dismiss the overlay so the Sign In control can be accessed.
+        # -> Click the 'Acknowledge Policy' button to dismiss the privacy & data protection modal so the Sign In entry point can be accessed.
         # Acknowledge Policy button
         elem = page.get_by_role('button', name='Acknowledge Policy', exact=True)
         await elem.click(timeout=10000)
         
-        # -> Click the 'Sign In' button on the landing page to open the sign in form.
+        # -> Click the 'Sign In' button on the landing page to open the sign-in form.
         # Sign In button
         elem = page.get_by_role('button', name='Sign In', exact=True)
         await elem.click(timeout=10000)
         
-        # -> Fill 'example@gmail.com' into the Email Address field and 'password123' into the Password field, then click the 'Sign In' button to submit the form.
+        # -> Fill the 'Email Address' field with 'example@gmail.com', fill the 'Password' field with 'password123', then click the 'Sign In' button to submit the form.
         # name@university.edu email field
         elem = page.get_by_placeholder('name@university.edu', exact=True)
         await elem.wait_for(state="visible", timeout=10000)
         await elem.fill("example@gmail.com")
         
-        # -> Fill 'example@gmail.com' into the Email Address field and 'password123' into the Password field, then click the 'Sign In' button to submit the form.
+        # -> Fill the 'Email Address' field with 'example@gmail.com', fill the 'Password' field with 'password123', then click the 'Sign In' button to submit the form.
         # •••••••• password field
         elem = page.get_by_placeholder('••••••••', exact=True)
         await elem.wait_for(state="visible", timeout=10000)
         await elem.fill("password123")
         
-        # -> Fill 'example@gmail.com' into the Email Address field and 'password123' into the Password field, then click the 'Sign In' button to submit the form.
+        # -> Fill the 'Email Address' field with 'example@gmail.com', fill the 'Password' field with 'password123', then click the 'Sign In' button to submit the form.
         # Sign In button
         elem = page.get_by_text('Email Address', exact=True).locator("xpath=ancestor-or-self::*[.//button][1]").get_by_role('button', name='Sign In', exact=True)
         await elem.click(timeout=10000)
         
-        # -> Click the 'Sign Out' button to sign the user out and verify the landing experience is displayed again.
+        # -> Click the 'Back to Home Page' link (label: 'Back to Home Page') to return to the public landing page and verify that the landing shows 'Sign In' or 'Try Free' entry points.
+        # home Back to Home Page link
+        elem = page.get_by_role('link', name='home Back to Home Page', exact=True)
+        await elem.click(timeout=10000)
+        
+        # -> Click the 'Sign Out' button to sign out and then confirm the public landing shows the 'Sign In' or 'Try Free - No Account Required' entry point.
         # Sign Out button
         elem = page.get_by_role('button', name='Sign Out', exact=True)
         await elem.click(timeout=10000)
         
         # --> Assertions to verify final state
-        current_url = await page.evaluate("() => window.location.href")
-        # Assert: page loaded with a URL (final outcome verified by the AI judge during the run)
-        assert current_url, 'Page should have loaded with a URL'
+        
+        # --> Verify the landing experience is displayed again
+        await page.locator("xpath=/html/body/div[2]/header/div/div[2]/button[1]").nth(0).scroll_into_view_if_needed()
+        # Assert: Landing page displays the 'Sign In' button.
+        await expect(page.locator("xpath=/html/body/div[2]/header/div/div[2]/button[1]").nth(0)).to_be_visible(timeout=15000), "Landing page displays the 'Sign In' button."
+        await page.locator("xpath=/html/body/div[2]/header/div/div[2]/button[2]").nth(0).scroll_into_view_if_needed()
+        # Assert: Landing page displays the 'Create Account' button.
+        await expect(page.locator("xpath=/html/body/div[2]/header/div/div[2]/button[2]").nth(0)).to_be_visible(timeout=15000), "Landing page displays the 'Create Account' button."
+        await page.locator("xpath=/html/body/div[2]/main/section[1]/div/div[2]/a").nth(0).scroll_into_view_if_needed()
+        # Assert: Landing page displays the 'Try Free - No Account Required' call-to-action.
+        await expect(page.locator("xpath=/html/body/div[2]/main/section[1]/div/div[2]/a").nth(0)).to_be_visible(timeout=15000), "Landing page displays the 'Try Free - No Account Required' call-to-action."
         await asyncio.sleep(5)
 
     finally:

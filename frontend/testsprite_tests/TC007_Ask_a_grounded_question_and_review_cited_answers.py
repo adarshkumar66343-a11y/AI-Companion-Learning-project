@@ -40,23 +40,48 @@ async def run_test():
         except Exception:
             pass
         
-        # -> Navigate to the app workspace by opening the /app page; if a privacy modal appears, click the 'Acknowledge Policy' button to dismiss it so the main workspace is accessible.
+        # -> Click the 'Acknowledge Policy' button in the privacy dialog to dismiss the modal and access the app.
+        # Acknowledge Policy button
+        elem = page.get_by_role('button', name='Acknowledge Policy', exact=True)
+        await elem.click(timeout=10000)
+        
+        # -> Click the 'Launch App' button to open the main workspace.
+        # Launch App link
+        elem = page.get_by_role('link', name='Launch App', exact=True)
+        await elem.click(timeout=10000)
+        
+        # -> navigate
         await page.goto("http://localhost:3000/app")
         try:
             await page.wait_for_load_state("domcontentloaded", timeout=5000)
         except Exception:
             pass
         
-        # -> Type a study question into the chat input labelled 'Ask any complex academic question here...' and submit it (press Enter) to request a cited answer from the Doubt Bot.
+        # -> Enter a study question into the chat input labeled 'Ask any complex academic question here...' and submit it by pressing Enter so the app produces an AI answer with citations.
         # Ask any complex academic question here... text field
         elem = page.get_by_placeholder('Ask any complex academic question here...', exact=True)
         await elem.wait_for(state="visible", timeout=10000)
-        await elem.fill("Using the active document context, summarize the main argument and provide brief inline citations to the uploaded material.")
+        await elem.fill("Using the uploaded materials, summarize the main conclusions about climate change policy and provide precise citations (document title and page or paragraph) for each supporting point.")
+        
+        # -> Focus the chat input labeled 'Ask any complex academic question here...' and press Enter to submit the study question so the app produces an AI answer with citations.
+        # Ask any complex academic question here... text field
+        elem = page.get_by_placeholder('Ask any complex academic question here...', exact=True)
+        await elem.click(timeout=10000)
+        
+        # -> Focus the chat input labeled 'Ask any complex academic question here...' and press Enter (or use the Send control if it appears) to submit the study question and wait for the AI response with citations.
+        # Ask any complex academic question here... text field
+        elem = page.get_by_placeholder('Ask any complex academic question here...', exact=True)
+        await elem.click(timeout=10000)
         
         # --> Assertions to verify final state
-        current_url = await page.evaluate("() => window.location.href")
-        # Assert: page loaded with a URL (final outcome verified by the AI judge during the run)
-        assert current_url, 'Page should have loaded with a URL'
+        
+        # --> Verify an AI response with citations is displayed
+        # Assert: Expected an AI response with citations to be displayed including document titles and page/paragraph references.
+        await expect(page.locator("xpath=/html/body/div[2]/div[2]/main/div/form/input/div[2]").nth(0)).to_contain_text("document title", timeout=15000), "Expected an AI response with citations to be displayed including document titles and page/paragraph references."
+        
+        # --> Test blocked by environment/access constraints during agent run
+        # Reason: TEST BLOCKED The test could not be run — the UI does not provide a clickable 'Send' control to submit the study question. Observations: - The chat input contains the study question but repeated Enter presses produced no AI response. - 16 button elements were discovered on the page, but none is a clickable control labeled 'Send'. - No interactive element representing a Send/Submit action is avai...
+        raise AssertionError("Test blocked during agent run: " + "TEST BLOCKED The test could not be run \u2014 the UI does not provide a clickable 'Send' control to submit the study question. Observations: - The chat input contains the study question but repeated Enter presses produced no AI response. - 16 button elements were discovered on the page, but none is a clickable control labeled 'Send'. - No interactive element representing a Send/Submit action is avai..." + " — the exported script cannot reproduce a PASS in this environment.")
         await asyncio.sleep(5)
 
     finally:

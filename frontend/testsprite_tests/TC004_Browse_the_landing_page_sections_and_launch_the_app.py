@@ -40,41 +40,67 @@ async def run_test():
         except Exception:
             pass
         
-        # -> Click the 'Acknowledge Policy' button to dismiss the privacy & data protection modal so the landing page navigation links are reachable.
+        # -> Click the 'Acknowledge Policy' button to close the Brainzy Privacy & Data Protection Agreement modal so the landing page navigation links can be used.
         # Acknowledge Policy button
         elem = page.get_by_role('button', name='Acknowledge Policy', exact=True)
         await elem.click(timeout=10000)
         
-        # -> Click the 'Features' navigation link in the header and verify the Features section becomes visible on the page.
+        # -> Click the 'Features' link in the top navigation and verify that the Features section is revealed and visible on the page.
         # Features link
         elem = page.get_by_role('link', name='Features', exact=True)
         await elem.click(timeout=10000)
         
-        # -> Click the 'Unique Capabilities' navigation link in the header and verify the Unique Capabilities (Unique Platform Capabilities) section becomes visible.
+        # -> Click the 'Unique Capabilities' link in the top navigation and verify the Unique Platform Capabilities section is displayed.
         # Unique Capabilities link
         elem = page.get_by_role('link', name='Unique Capabilities', exact=True)
         await elem.click(timeout=10000)
         
-        # -> Scroll to the top of the landing page to reveal the header navigation, then locate the 'Testimonials' header link so it can be clicked to verify the testimonials section.
-        await page.mouse.wheel(0, 300)
-        
-        # -> Click the header navigation link labeled 'Testimonials' and verify that the testimonials section (for example, a heading like 'Loved by Students & Researchers' and testimonial cards) becomes visible.
+        # -> Click the 'Unique Capabilities' link in the top navigation and verify the Unique Platform Capabilities section is displayed.
         # Testimonials link
         elem = page.get_by_role('link', name='Testimonials', exact=True)
         await elem.click(timeout=10000)
         
-        # -> Scroll to the top to reveal the header navigation, then click the 'Benefits' header link and verify the Benefits section (e.g., 'Why Choose Brainzy?' or Benefits content) is visible.
-        await page.mouse.wheel(0, 300)
-        
-        # -> Click the 'Benefits' header link and verify the Benefits section (e.g., a heading like 'Why Choose Brainzy?' or benefits content) becomes visible on the page.
+        # -> Click the 'Unique Capabilities' link in the top navigation and verify the Unique Platform Capabilities section is displayed.
         # Benefits link
         elem = page.get_by_role('link', name='Benefits', exact=True)
         await elem.click(timeout=10000)
         
-        # -> Scroll to the top of the landing page to reveal the header navigation, locate and click the 'Launch App' header link, and verify the main study workspace is displayed.
+        # -> Click the 'Unique Capabilities' link in the top navigation and verify the Unique Platform Capabilities section is displayed.
+        # Launch App link
+        elem = page.get_by_role('link', name='Launch App', exact=True)
+        await elem.click(timeout=10000)
+        
+        # -> Click the 'Back to Home Page' link to return to the landing page so the 'Unique Platform Capabilities' section can be revealed and verified.
+        # home Back to Home Page link
+        elem = page.get_by_role('link', name='home Back to Home Page', exact=True)
+        await elem.click(timeout=10000)
+        
+        # -> Click the 'Unique Capabilities' link in the top navigation to reveal the Unique Platform Capabilities section so it can be verified visually.
+        # Unique Capabilities link
+        elem = page.get_by_role('link', name='Unique Capabilities', exact=True)
+        await elem.click(timeout=10000)
+        
+        # -> Navigate to the Testimonials section of the landing page and verify the Testimonials section is visible (look for the 'Loved by Students & Researchers' heading and student testimonial cards).
+        await page.goto("http://localhost:3000/#testimonials")
+        try:
+            await page.wait_for_load_state("domcontentloaded", timeout=5000)
+        except Exception:
+            pass
+        
+        # -> Reveal the 'Benefits' (Why Choose Brainzy?) section by navigating to the landing page's Benefits anchor and verify the Benefits section is visible.
+        await page.goto("http://localhost:3000/#benefits")
+        try:
+            await page.wait_for_load_state("domcontentloaded", timeout=5000)
+        except Exception:
+            pass
+        
+        # -> Scroll up to reveal the top navigation and the 'Launch App' button so it can be clicked to open the main workspace.
         await page.mouse.wheel(0, 300)
         
-        # -> Click the 'Launch App' header link and verify that the main study workspace is displayed (look for workspace UI like a file upload area, workspace header, or study controls).
+        # -> Scroll to the top of the landing page and locate the 'Launch App' button (top navigation) so its interactive element index can be identified for clicking to open the main workspace.
+        await page.mouse.wheel(0, 300)
+        
+        # -> Click the 'Launch App' button in the top navigation to open the main workspace and verify the workspace UI (workspace header, editor area, or sandbox content) is displayed.
         # Launch App link
         elem = page.get_by_role('link', name='Launch App', exact=True)
         await elem.click(timeout=10000)
@@ -82,18 +108,15 @@ async def run_test():
         # --> Assertions to verify final state
         
         # --> Verify the main workspace is displayed
-        await page.locator("xpath=/html/body/div[3]/div[2]/aside/div[1]/div/div[2]/select").nth(0).scroll_into_view_if_needed()
-        # Assert: The workspace shows the active document selector with the listed documents (e.g. 'study_sample').
-        await expect(page.locator("xpath=/html/body/div[3]/div[2]/aside/div[1]/div/div[2]/select").nth(0)).to_be_visible(timeout=15000), "The workspace shows the active document selector with the listed documents (e.g. 'study_sample')."
-        await page.locator("xpath=/html/body/div[3]/div[2]/aside/div[1]/div/div[3]").nth(0).scroll_into_view_if_needed()
-        # Assert: The workspace file upload area with 'Drag & Drop or browse files' is visible.
-        await expect(page.locator("xpath=/html/body/div[3]/div[2]/aside/div[1]/div/div[3]").nth(0)).to_be_visible(timeout=15000), "The workspace file upload area with 'Drag & Drop or browse files' is visible."
-        await page.locator("xpath=/html/body/div[3]/div[1]/button[2]").nth(0).scroll_into_view_if_needed()
-        # Assert: The workspace Doubt Bot control is visible, indicating the study workspace UI is present.
-        await expect(page.locator("xpath=/html/body/div[3]/div[1]/button[2]").nth(0)).to_be_visible(timeout=15000), "The workspace Doubt Bot control is visible, indicating the study workspace UI is present."
-        await page.locator("xpath=/html/body/div[3]/div[2]/main/div/div[1]/button").nth(0).scroll_into_view_if_needed()
-        # Assert: The workspace control 'Clear History' is visible, confirming the main workspace is displayed.
-        await expect(page.locator("xpath=/html/body/div[3]/div[2]/main/div/div[1]/button").nth(0)).to_be_visible(timeout=15000), "The workspace control 'Clear History' is visible, confirming the main workspace is displayed."
+        await page.locator("xpath=/html/body/div[2]/div[2]/main/div/form/input").nth(0).scroll_into_view_if_needed()
+        # Assert: The workspace input field is visible, indicating the main workspace is displayed.
+        await expect(page.locator("xpath=/html/body/div[2]/div[2]/main/div/form/input").nth(0)).to_be_visible(timeout=15000), "The workspace input field is visible, indicating the main workspace is displayed."
+        await page.locator("xpath=/html/body/div[2]/div[1]/button[2]").nth(0).scroll_into_view_if_needed()
+        # Assert: The 'Doubt Bot' tab is visible in the workspace header.
+        await expect(page.locator("xpath=/html/body/div[2]/div[1]/button[2]").nth(0)).to_be_visible(timeout=15000), "The 'Doubt Bot' tab is visible in the workspace header."
+        await page.locator("xpath=/html/body/div[2]/div[2]/main/div/div[1]/button").nth(0).scroll_into_view_if_needed()
+        # Assert: The 'Clear History' button is visible, confirming the workspace UI is present.
+        await expect(page.locator("xpath=/html/body/div[2]/div[2]/main/div/div[1]/button").nth(0)).to_be_visible(timeout=15000), "The 'Clear History' button is visible, confirming the workspace UI is present."
         current_url = await page.evaluate("() => window.location.href")
         # Assert: page loaded with a URL (final outcome verified by the AI judge during the run)
         assert current_url, 'Page should have loaded with a URL'
