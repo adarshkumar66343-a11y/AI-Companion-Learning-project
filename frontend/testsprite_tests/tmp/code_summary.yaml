@@ -1,0 +1,269 @@
+version: "2"
+type: frontend
+tech_stack:
+  - TypeScript
+  - Next.js 16 (App Router)
+  - React 19
+  - TailwindCSS v4
+  - lemma-sdk
+  - lucide-react
+
+routes:
+  - path: /
+    file: src/app/page.tsx
+    auth_required: false
+    description: Landing page with hero section, features grid, testimonials, benefits, and file upload CTA
+  - path: /app
+    file: src/app/app/page.tsx
+    auth_required: false
+    description: Main Brainzy workspace - Doubt Bot chat, study timer, document management
+  - path: /flashcards
+    file: src/app/flashcards/page.tsx
+    auth_required: false
+    description: Interactive 3D flashcard study deck generated from documents
+  - path: /practice-exam
+    file: src/app/practice-exam/page.tsx
+    auth_required: false
+    description: AI-generated MCQ and matching practice exams
+  - path: /progress
+    file: src/app/progress/page.tsx
+    auth_required: false
+    description: Study progress tracker with daily/weekly/monthly analytics
+  - path: /audio
+    file: src/app/audio/page.tsx
+    auth_required: false
+    description: Audio recording and transcription tool for lectures/notes
+  - path: /ocr
+    file: src/app/ocr/page.tsx
+    auth_required: false
+    description: Vision OCR to extract text from handwritten notes or textbook images
+  - path: /summary
+    file: src/app/summary/page.tsx
+    auth_required: false
+    description: AI Summary Generator to create paragraph or bullet-point summaries
+  - path: /flowchart
+    file: src/app/flowchart/page.tsx
+    auth_required: false
+    description: Flowchart generation from document content
+  - path: /pwa
+    file: src/app/pwa/page.tsx
+    auth_required: false
+    description: PWA installation guide page for offline support
+  - path: /api/lemma
+    file: src/app/api/lemma/route.ts
+    auth_required: false
+    description: Backend API route integrating Lemma SDK for RAG, document management, and AI operations
+
+features:
+  - name: Landing Page Navigation
+    description: Top navigation bar with links to Features, Unique Capabilities, Testimonials, Benefits sections
+    files:
+      - src/app/page.tsx
+    entry_route: /
+    user_interactions:
+      - Click Features nav link to scroll to features section
+      - Click Unique Capabilities nav link to scroll to section
+      - Click Testimonials nav link to scroll to section
+      - Click Benefits nav link to scroll to section
+      - Click Launch App button to navigate to /app
+    api_calls: []
+    auth_required: false
+
+  - name: User Sign Up / Create Account
+    description: Modal form to create a local account stored in localStorage (email, name, password)
+    files:
+      - src/app/page.tsx
+    entry_route: /
+    user_interactions:
+      - Click Create Account button in header to open signup modal
+      - Fill Full Name input field
+      - Fill Email Address input field
+      - Fill Password input field
+      - Click Create Account submit button
+      - See redirect to /app after success
+    api_calls: []
+    auth_required: false
+
+  - name: User Sign In
+    description: Modal form to sign in with email/password, stored in localStorage
+    files:
+      - src/app/page.tsx
+    entry_route: /
+    user_interactions:
+      - Click Sign In button in header to open sign in modal
+      - Fill Email Address input field
+      - Fill Password input field
+      - Click Sign In submit button
+    api_calls: []
+    auth_required: false
+
+  - name: User Sign Out
+    description: Clear user session from localStorage and update header
+    files:
+      - src/app/page.tsx
+    entry_route: /
+    user_interactions:
+      - Click Sign Out button when logged in
+    api_calls: []
+    auth_required: true
+
+  - name: Privacy Policy Modal
+    description: Privacy policy acceptance modal shown on first visit
+    files:
+      - src/app/page.tsx
+    entry_route: /
+    user_interactions:
+      - See privacy modal on first page load
+      - Click Accept button to dismiss
+      - Click Privacy Policy link in footer to reopen modal
+    api_calls: []
+    auth_required: false
+
+  - name: PDF Document Upload
+    description: Upload a PDF file to ground the RAG workspace, redirects to /app after success
+    files:
+      - src/app/page.tsx
+    entry_route: /
+    user_interactions:
+      - Click the file upload area in the CTA section
+      - Select a PDF file from file picker
+      - See uploading/analyzing status message
+      - See success message and redirect to /app
+    api_calls:
+      - method: POST
+        endpoint: /api/lemma
+    auth_required: false
+
+  - name: Testimonials & Review Form
+    description: View testimonials grid and add a new review via inline form
+    files:
+      - src/app/page.tsx
+    entry_route: /#testimonials
+    user_interactions:
+      - View existing testimonial cards
+      - Click Write Review button to open review form
+      - Fill Your Name field
+      - Fill Role / Department field
+      - Fill Review Statement textarea
+      - Click Submit to add review to grid
+      - Click Cancel to dismiss form
+    api_calls: []
+    auth_required: false
+
+  - name: Doubt Bot Workspace (Main App)
+    description: Chat-based AI Q&A with grounded document context, study timer, and sidebar navigation
+    files:
+      - src/app/app/page.tsx
+    entry_route: /app
+    user_interactions:
+      - Type a message in the chat input field
+      - Click Send button or press Enter to submit question
+      - View AI response with citations
+      - Click sidebar nav items to switch between features
+      - Use study timer start/stop controls
+    api_calls:
+      - method: POST
+        endpoint: /api/lemma
+    auth_required: false
+
+  - name: AI Flashcards
+    description: Generate and study 3D flip flashcards from document content
+    files:
+      - src/app/flashcards/page.tsx
+    entry_route: /flashcards
+    user_interactions:
+      - Click Generate Flashcards button
+      - Click a flashcard to flip it (3D animation)
+      - Click Next/Previous to navigate cards
+      - Rate card difficulty (Easy/Medium/Hard)
+    api_calls:
+      - method: POST
+        endpoint: /api/lemma
+    auth_required: false
+
+  - name: Practice Exams
+    description: AI-generated MCQ practice exam with instant scoring and explanations
+    files:
+      - src/app/practice-exam/page.tsx
+    entry_route: /practice-exam
+    user_interactions:
+      - Click Generate Exam button
+      - Select answer option for each question
+      - View correct/incorrect feedback
+      - See final score at the end
+    api_calls:
+      - method: POST
+        endpoint: /api/lemma
+    auth_required: false
+
+  - name: Progress Tracker
+    description: Study progress analytics with session consistency charts
+    files:
+      - src/app/progress/page.tsx
+    entry_route: /progress
+    user_interactions:
+      - View daily/weekly/monthly progress charts
+      - View session count and consistency metrics
+    api_calls: []
+    auth_required: false
+
+  - name: Audio Recording & Transcription
+    description: Record audio in browser and transcribe to text
+    files:
+      - src/app/audio/page.tsx
+    entry_route: /audio
+    user_interactions:
+      - Click Start Recording button
+      - Speak into microphone
+      - Click Stop Recording button
+      - View transcribed text output
+    api_calls: []
+    auth_required: false
+
+  - name: Vision OCR
+    description: Upload image of handwritten notes or textbook and extract text
+    files:
+      - src/app/ocr/page.tsx
+    entry_route: /ocr
+    user_interactions:
+      - Upload an image file
+      - Click Extract Text button
+      - View extracted text result
+    api_calls:
+      - method: POST
+        endpoint: /api/lemma
+    auth_required: false
+
+  - name: AI Summary Generator
+    description: Generate paragraph or bullet-point summary from document content
+    files:
+      - src/app/summary/page.tsx
+    entry_route: /summary
+    user_interactions:
+      - Select summary format (paragraph or bullets)
+      - Set word limit or detail level
+      - Click Generate Summary button
+      - View generated summary text
+    api_calls:
+      - method: POST
+        endpoint: /api/lemma
+    auth_required: false
+
+  - name: PWA Install Page
+    description: Guide user to install Brainzy as a Progressive Web App
+    files:
+      - src/app/pwa/page.tsx
+    entry_route: /pwa
+    user_interactions:
+      - View PWA installation instructions
+      - Click install prompt if available
+    api_calls: []
+    auth_required: false
+
+known_limitations:
+  - issue: Authentication is localStorage-only, no real backend auth
+    location: src/app/page.tsx
+    impact: Sessions are lost on browser data clear; no real security
+  - issue: File upload grounding requires backend Lemma API to be running
+    location: src/app/page.tsx
+    impact: Upload CTA will fail without backend service running on correct port

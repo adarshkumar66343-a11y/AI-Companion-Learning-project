@@ -1,0 +1,1428 @@
+[
+  {
+    "id": "TC001",
+    "title": "Upload a study PDF and start grounded chat in the workspace",
+    "description": "This verifies that a user can upload a PDF and then use the main chat workspace for grounded study help with cited answers.",
+    "category": "Landing Page Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the launch app action"
+      },
+      {
+        "type": "action",
+        "description": "Upload a valid study PDF from the document area"
+      },
+      {
+        "type": "action",
+        "description": "Ask a grounded question about the uploaded material"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a cited answer is displayed in the chat"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the uploaded document is available in the workspace"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Read a grounded answer in the study workspace",
+    "description": "This verifies that a user can upload a document, ask a grounded question in the main workspace, and see cited study help.",
+    "category": "PDF Document Upload",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the document upload area"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid PDF file"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the upload and analysis to complete"
+      },
+      {
+        "type": "action",
+        "description": "Open the main study workspace if needed"
+      },
+      {
+        "type": "action",
+        "description": "Ask a grounded study question"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a cited answer is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the study timer is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Upload a study PDF and continue into the workspace",
+    "description": "This verifies a user can upload a study PDF from the entry flow and then continue into the main study workspace with grounding available.",
+    "category": "Doubt Bot Workspace (Main App)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the document upload entry point"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid PDF document to upload"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the upload to complete"
+      },
+      {
+        "type": "action",
+        "description": "Click the control to open the main study workspace"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the uploaded document is available in the workspace"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Browse the landing page sections and launch the app",
+    "description": "This verifies that a prospective student can navigate the landing page sections and enter the main study workspace successfully.",
+    "category": "Landing Page Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the features section link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the features section is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click the unique capabilities section link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the unique capabilities section is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click the testimonials section link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the testimonials section is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click the benefits section link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the benefits section is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click the launch app action"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the main workspace is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Land on the study workspace from the entry page",
+    "description": "This verifies a new user can start from the landing experience and reach the main workspace ready to study.",
+    "category": "Doubt Bot Workspace (Main App)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the entry point to open the main study workspace"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the main workspace is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Upload a PDF to enter the study workspace",
+    "description": "This verifies that a user can select a PDF on the landing page and reach the main study workspace after processing.",
+    "category": "PDF Document Upload",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the document upload area"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid PDF file"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify upload progress or analysis status is shown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands in the study workspace"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Ask a grounded question and review cited answers",
+    "description": "This verifies a user can ask a study question in the main workspace and receive a cited answer based on the uploaded material.",
+    "category": "Doubt Bot Workspace (Main App)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /app"
+      },
+      {
+        "type": "action",
+        "description": "Type a study question into the chat input"
+      },
+      {
+        "type": "action",
+        "description": "Submit the question"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an AI response with citations is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Create a local account and enter the workspace",
+    "description": "This verifies a new user can create a local account and reach the study workspace after signing up.",
+    "category": "Doubt Bot Workspace (Main App)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the sign up entry point"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the account creation fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Submit the account creation form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user enters the main workspace"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Sign in and sign out of a local account",
+    "description": "This verifies a returning user can sign in, access the workspace, and sign out successfully.",
+    "category": "Doubt Bot Workspace (Main App)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the sign in entry point"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the sign in fields with valid credentials"
+      },
+      {
+        "type": "action",
+        "description": "Submit the sign in form"
+      },
+      {
+        "type": "action",
+        "description": "Click the sign out control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the landing experience is displayed again"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Sign in with an existing local account",
+    "description": "This verifies that a returning user can sign in with saved local credentials and access the workspace.",
+    "category": "User Sign In",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the sign in form"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with test.student@example.com"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with a valid password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the sign in form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the main workspace is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Continue a study session with a follow-up grounded question",
+    "description": "This verifies that a user can ask a second grounded question after an initial answer and keep studying in the same workspace session.",
+    "category": "PDF Document Upload",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the document upload area"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid PDF file"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the upload and analysis to complete"
+      },
+      {
+        "type": "action",
+        "description": "Ask a grounded study question"
+      },
+      {
+        "type": "action",
+        "description": "Ask a follow-up grounded question"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a second cited answer is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the conversation remains in the study workspace"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Continue a study conversation with a follow-up question",
+    "description": "This verifies a user can ask a follow-up question in the same workspace and see the conversation update with a new grounded response.",
+    "category": "Doubt Bot Workspace (Main App)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /app"
+      },
+      {
+        "type": "action",
+        "description": "Type an initial study question into the chat input"
+      },
+      {
+        "type": "action",
+        "description": "Submit the question"
+      },
+      {
+        "type": "action",
+        "description": "Type a follow-up question into the chat input"
+      },
+      {
+        "type": "action",
+        "description": "Submit the question"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the conversation shows an updated AI response"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Open the workspace from the landing page and see study tools",
+    "description": "This verifies that a user can move from the public site into the app and see the core study workspace controls.",
+    "category": "Landing Page Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the launch app action"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the main workspace is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the study timer is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC014",
+    "title": "Use a follow-up question and study timer during a study session",
+    "description": "This verifies that a user can continue a grounded conversation and use the study timer while staying in the workspace.",
+    "category": "Landing Page Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the launch app action"
+      },
+      {
+        "type": "action",
+        "description": "Upload a valid study PDF from the document area"
+      },
+      {
+        "type": "action",
+        "description": "Ask a grounded question about the uploaded material"
+      },
+      {
+        "type": "action",
+        "description": "Ask a follow-up question about the same material"
+      },
+      {
+        "type": "action",
+        "description": "Start the study timer"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the follow-up answer is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the study timer is running"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC015",
+    "title": "Use the study timer during a session",
+    "description": "This verifies that a user in the study workspace can start and stop the timer while staying in the same session.",
+    "category": "PDF Document Upload",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the document upload area"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid PDF file"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the upload and analysis to complete"
+      },
+      {
+        "type": "action",
+        "description": "Start the study timer"
+      },
+      {
+        "type": "action",
+        "description": "Stop the study timer"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the study timer shows elapsed progress"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the workspace remains available"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC016",
+    "title": "Generate a practice exam and answer questions",
+    "description": "This verifies a user can generate a practice exam, answer questions, and see immediate feedback.",
+    "category": "Practice Exams",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /practice-exam"
+      },
+      {
+        "type": "action",
+        "description": "Generate an exam"
+      },
+      {
+        "type": "action",
+        "description": "Select an answer for the current question"
+      },
+      {
+        "type": "action",
+        "description": "Move through the exam to the next question"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify question feedback is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC017",
+    "title": "Generate and complete a practice exam",
+    "description": "This verifies that a user can generate a practice exam, answer questions, and receive a completed score summary.",
+    "category": "Practice Exams generation/answering/scoring",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /practice-exam"
+      },
+      {
+        "type": "action",
+        "description": "Generate a practice exam from available study material"
+      },
+      {
+        "type": "action",
+        "description": "Answer the first exam question"
+      },
+      {
+        "type": "action",
+        "description": "Submit the current answer"
+      },
+      {
+        "type": "action",
+        "description": "Continue until the exam is completed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a final score summary is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify question explanations are shown"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC018",
+    "title": "Generate flashcards from study material",
+    "description": "This verifies a user can generate a flashcard deck from study content and begin reviewing it.",
+    "category": "AI Flashcards",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /flashcards"
+      },
+      {
+        "type": "action",
+        "description": "Generate flashcards"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a flashcard deck is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC019",
+    "title": "Complete a practice exam and review the final score",
+    "description": "This verifies a user can finish an exam and see the final score with explanations at the end.",
+    "category": "Practice Exams",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /practice-exam"
+      },
+      {
+        "type": "action",
+        "description": "Generate an exam"
+      },
+      {
+        "type": "action",
+        "description": "Answer the exam questions through to the end"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the final score and explanations are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC020",
+    "title": "Extract text from an uploaded image",
+    "description": "A user can upload an image in the OCR tool, run extraction, and see the extracted text result.",
+    "category": "Vision OCR",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /ocr"
+      },
+      {
+        "type": "action",
+        "description": "Upload a valid image file"
+      },
+      {
+        "type": "action",
+        "description": "Extract the text from the image"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify extracted text results are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC021",
+    "title": "Review flashcards by flipping and rating difficulty",
+    "description": "This verifies a user can flip through flashcards and rate cards based on difficulty during review.",
+    "category": "AI Flashcards",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /flashcards"
+      },
+      {
+        "type": "action",
+        "description": "Generate flashcards"
+      },
+      {
+        "type": "action",
+        "description": "Flip the current flashcard"
+      },
+      {
+        "type": "action",
+        "description": "Move to the next flashcard"
+      },
+      {
+        "type": "action",
+        "description": "Rate the current card difficulty"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify flashcard review controls remain available during study"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC022",
+    "title": "Generate a paragraph summary from study content",
+    "description": "A user can choose paragraph summary mode, generate a summary from study content, and see the resulting summary displayed.",
+    "category": "AI Summary Generator",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /summary"
+      },
+      {
+        "type": "action",
+        "description": "Select paragraph summary format"
+      },
+      {
+        "type": "action",
+        "description": "Set a valid word limit or detail level"
+      },
+      {
+        "type": "action",
+        "description": "Generate the summary"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a generated summary is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC023",
+    "title": "Extract text from an image with OCR",
+    "description": "This verifies that a user can open the OCR tool, process an image, and see extracted text for study review.",
+    "category": "OCR image text extraction",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /ocr"
+      },
+      {
+        "type": "action",
+        "description": "Upload or select a valid image for OCR"
+      },
+      {
+        "type": "action",
+        "description": "Run text extraction"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify extracted text is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the OCR result is usable for review"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC024",
+    "title": "Record audio and view the transcription",
+    "description": "A user can start and stop an in-browser recording and then see the spoken content transcribed as text.",
+    "category": "Audio Recording & Transcription",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /audio"
+      },
+      {
+        "type": "action",
+        "description": "Start recording audio"
+      },
+      {
+        "type": "action",
+        "description": "Stop recording audio"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a transcribed text output is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC025",
+    "title": "Review flashcards and rate difficulty",
+    "description": "This verifies that a learner can flip through flashcards and record difficulty ratings while continuing through the deck.",
+    "category": "AI Flashcards generation/review",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /flashcards"
+      },
+      {
+        "type": "action",
+        "description": "Generate flashcards from available study material"
+      },
+      {
+        "type": "action",
+        "description": "Flip to the next side of the current flashcard"
+      },
+      {
+        "type": "action",
+        "description": "Rate the flashcard difficulty"
+      },
+      {
+        "type": "action",
+        "description": "Move to the next flashcard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the deck continues to the next card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the difficulty rating is reflected in the review flow"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC026",
+    "title": "Review per-question feedback in a practice exam",
+    "description": "This verifies that a learner can see feedback for answered questions while moving through a generated exam.",
+    "category": "Practice Exams generation/answering/scoring",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /practice-exam"
+      },
+      {
+        "type": "action",
+        "description": "Generate a practice exam from available study material"
+      },
+      {
+        "type": "action",
+        "description": "Answer a question"
+      },
+      {
+        "type": "action",
+        "description": "Submit the answer"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify per-question feedback is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the exam continues to the next item"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC027",
+    "title": "Switch between workspace sections from the sidebar",
+    "description": "This verifies a user can navigate between workspace areas from the sidebar without leaving the main app.",
+    "category": "Doubt Bot Workspace (Main App)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /app"
+      },
+      {
+        "type": "action",
+        "description": "Click a sidebar item for another workspace area"
+      },
+      {
+        "type": "action",
+        "description": "Return to the chat area from the sidebar"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected workspace section is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC028",
+    "title": "Generate a concise bullet summary",
+    "description": "A user can choose bullet summary mode, generate a shorter summary, and see a concise bullet summary displayed.",
+    "category": "AI Summary Generator",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /summary"
+      },
+      {
+        "type": "action",
+        "description": "Select bullet summary format"
+      },
+      {
+        "type": "action",
+        "description": "Set a shorter valid word limit or detail level"
+      },
+      {
+        "type": "action",
+        "description": "Generate the summary"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a concise summary is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC029",
+    "title": "Generate a concise summary from extracted study text",
+    "description": "This verifies that a user can create a summary from provided study text and review the output in the summary tool.",
+    "category": "Summary Generator",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /summary"
+      },
+      {
+        "type": "action",
+        "description": "Provide study text for summarization"
+      },
+      {
+        "type": "action",
+        "description": "Generate a summary"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a concise summary is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the summary can be reviewed in the page"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC030",
+    "title": "Update summary settings before generating",
+    "description": "A user can change summary format and detail settings before generation and the resulting summary reflects the selected configuration.",
+    "category": "AI Summary Generator",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /summary"
+      },
+      {
+        "type": "action",
+        "description": "Select paragraph summary format"
+      },
+      {
+        "type": "action",
+        "description": "Set a valid word limit or detail level"
+      },
+      {
+        "type": "action",
+        "description": "Change the summary format to bullet summary"
+      },
+      {
+        "type": "action",
+        "description": "Generate the summary"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a generated summary is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC031",
+    "title": "Generate a flowchart from study content",
+    "description": "This verifies a user can turn study content into a flowchart for quick review.",
+    "category": "Flowchart Generation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /flowchart"
+      },
+      {
+        "type": "action",
+        "description": "Enter study content for flowchart generation"
+      },
+      {
+        "type": "action",
+        "description": "Generate the flowchart"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a flowchart is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC032",
+    "title": "View study progress charts and metrics",
+    "description": "This verifies that a user can open the progress page and review their study analytics.",
+    "category": "Progress Tracker charts and metrics",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /progress"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify study progress charts are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify progress metrics are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC033",
+    "title": "View progress analytics across time ranges",
+    "description": "A user can open the progress tracker and review daily, weekly, and monthly study analytics along with overall consistency metrics.",
+    "category": "Progress Tracker",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /progress"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify daily progress analytics are displayed"
+      },
+      {
+        "type": "action",
+        "description": "View the weekly progress analytics"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify weekly progress analytics are displayed"
+      },
+      {
+        "type": "action",
+        "description": "View the monthly progress analytics"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify monthly progress analytics are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify session consistency metrics are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC034",
+    "title": "Browse testimonials and submit a review",
+    "description": "This verifies that a visitor can read testimonials, submit a review, and see it appear in the testimonials grid.",
+    "category": "Testimonials & Review Form",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#testimonials"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify testimonial cards are displayed"
+      },
+      {
+        "type": "action",
+        "description": "Open the review form"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with Alex Carter"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the role or department field with Biology"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the review field with Brainzy helped me study more efficiently"
+      },
+      {
+        "type": "action",
+        "description": "Submit the review"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new review appears in the testimonials grid"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC035",
+    "title": "Review the generated flowchart structure",
+    "description": "A user can open the flowchart tool, generate a diagram, and review the document structure it presents.",
+    "category": "Flowchart Generation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /flowchart"
+      },
+      {
+        "type": "action",
+        "description": "Generate the flowchart"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the flowchart structure is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC036",
+    "title": "Use the install prompt when available",
+    "description": "A user can open the PWA page, trigger the available install prompt, and see the app installation proceed in the browser.",
+    "category": "PWA Install Page",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /pwa"
+      },
+      {
+        "type": "action",
+        "description": "Click the install prompt if it is available"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the app install flow is shown"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC037",
+    "title": "Read PWA installation instructions",
+    "description": "A user can open the PWA page and see instructions for installing the app for offline access.",
+    "category": "PWA Install Page",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /pwa"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify installation instructions are displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC038",
+    "title": "Install the app from the PWA guide",
+    "description": "This verifies that a mobile or PWA user can open the installation guidance and see the app install instructions.",
+    "category": "PWA install page/instructions",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /pwa"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify installation guidance is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify mobile install instructions are visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC039",
+    "title": "Open the PWA installation guidance",
+    "description": "This verifies a mobile user can view the app's installation guidance for offline use.",
+    "category": "PWA Install",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /pwa"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify installation instructions are displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC040",
+    "title": "Show validation when summary settings are incomplete",
+    "description": "A user who attempts to generate a summary without required settings sees validation feedback and no summary is produced.",
+    "category": "AI Summary Generator",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /summary"
+      },
+      {
+        "type": "action",
+        "description": "Generate the summary"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation error is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no summary is displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC041",
+    "title": "View and use the landing page privacy policy on first visit",
+    "description": "This verifies that a first-time visitor can open the privacy policy and dismiss it to continue browsing the site.",
+    "category": "Landing Page Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the privacy policy modal"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the privacy policy modal is visible"
+      },
+      {
+        "type": "action",
+        "description": "Accept the privacy policy"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the privacy policy modal is dismissed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC042",
+    "title": "Accept the privacy notice on first visit",
+    "description": "This verifies that a first-time visitor can review and dismiss the privacy notice and continue using the landing page.",
+    "category": "Privacy Policy Modal",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the privacy notice is visible"
+      },
+      {
+        "type": "action",
+        "description": "Accept the privacy notice"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the privacy notice is dismissed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC043",
+    "title": "Read the landing page sections and testimonials",
+    "description": "This verifies a prospective student can explore the landing page content and see the key marketing sections before starting the app.",
+    "category": "Landing Page",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the landing page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the feature sections are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify testimonials are displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC044",
+    "title": "Show an empty OCR state before any image is provided",
+    "description": "A user opening OCR without uploading an image sees an empty or waiting state instead of extracted text.",
+    "category": "Vision OCR",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /ocr"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty state message is displayed for OCR input"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC045",
+    "title": "Cancel a testimonial review before submitting",
+    "description": "This verifies that a visitor can open the review form and dismiss it without adding a testimonial.",
+    "category": "Testimonials & Review Form",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /#testimonials"
+      },
+      {
+        "type": "action",
+        "description": "Open the review form"
+      },
+      {
+        "type": "action",
+        "description": "Cancel the review form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the review form is dismissed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the testimonials grid remains visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC046",
+    "title": "Show a ready state for audio transcription before recording",
+    "description": "A user opening the audio tool before recording sees the recording interface ready for use and no transcription output yet.",
+    "category": "Audio Recording & Transcription",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /audio"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the recording interface is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no transcription output is displayed before recording"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC047",
+    "title": "Show an empty state before any flowchart is generated",
+    "description": "A user visiting the flowchart tool before generating content sees an empty state instead of a diagram.",
+    "category": "Flowchart Generation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /flowchart"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty state message is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC048",
+    "title": "Reopen the privacy notice from the landing page footer",
+    "description": "This verifies that a returning visitor can reopen the privacy notice from the landing page after it has been dismissed.",
+    "category": "Privacy Policy Modal",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Accept the privacy notice"
+      },
+      {
+        "type": "action",
+        "description": "Open the privacy policy from the footer"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the privacy notice is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC049",
+    "title": "Open the privacy policy from the landing page",
+    "description": "This verifies a first-time visitor can open the privacy policy modal and review it from the landing experience.",
+    "category": "Privacy Policy",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the privacy policy from the landing page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the privacy policy modal is displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC050",
+    "title": "View progress metrics without a recorded session",
+    "description": "A user can open the progress tracker and see the analytics screen even when there are no personal study sessions to display yet.",
+    "category": "Progress Tracker",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /progress"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the progress analytics screen is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify consistency metrics are available"
+      }
+    ],
+    "priority": "Low"
+  }
+]
