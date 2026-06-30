@@ -1,0 +1,52 @@
+[
+  {
+    "id": "TC001",
+    "title": "get list papers returns all loaded papers",
+    "description": "Verify that GET /api/lemma?action=listPapers returns a 200 status with an array of AcademicPaper objects representing all loaded syllabus materials."
+  },
+  {
+    "id": "TC002",
+    "title": "post create paper adds new paper with valid data",
+    "description": "Verify that POST /api/lemma with action=createPaper and valid paper data returns 200 with the created paper object, and subsequent GET /api/lemma?action=listPapers includes the new paper."
+  },
+  {
+    "id": "TC003",
+    "title": "post create paper rejects invalid paper data",
+    "description": "Verify that POST /api/lemma with action=createPaper and invalid or incomplete paper data returns an error response and does not add the paper to the library."
+  },
+  {
+    "id": "TC004",
+    "title": "post ask doubt returns answer for valid question",
+    "description": "Verify that POST /api/lemma with action=askDoubt and a valid question tied to a loaded paper returns 200 with an answer or grounding response."
+  },
+  {
+    "id": "TC005",
+    "title": "post ask doubt handles invalid or unsupported questions",
+    "description": "Verify that POST /api/lemma with action=askDoubt and an invalid or unsupported question returns an error response or fallback message."
+  },
+  {
+    "id": "TC006",
+    "title": "post generate study materials returns summary for loaded paper",
+    "description": "Verify that POST /api/lemma with action=generateStudyMaterials for a loaded paper returns 200 with generated summary content."
+  },
+  {
+    "id": "TC007",
+    "title": "post generate study materials errors on missing or unsupported paper",
+    "description": "Verify that POST /api/lemma with action=generateStudyMaterials for a missing paperId or unsupported paper returns an error response and no summary is generated."
+  },
+  {
+    "id": "TC008",
+    "title": "get list flashcards returns flashcards for valid paper",
+    "description": "Verify that GET /api/lemma?action=listFlashcards&paperId={paperId} returns 200 with an array of Flashcard objects for the specified paper."
+  },
+  {
+    "id": "TC009",
+    "title": "post rate flashcard records valid difficulty rating",
+    "description": "Verify that POST /api/lemma with action=rateFlashcard and a valid difficulty rating payload returns 200 confirming the rating is recorded."
+  },
+  {
+    "id": "TC010",
+    "title": "post rate flashcard rejects invalid rating payload",
+    "description": "Verify that POST /api/lemma with action=rateFlashcard and an invalid flashcard rating payload returns an error response and does not record the rating."
+  }
+]

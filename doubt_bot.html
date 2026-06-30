@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Doubt Bot | InsightFlow AI</title>
+<!-- Google Fonts: Inter & Hanken Grotesk -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#4865d4",
+                    "tertiary": "#2c4bb9",
+                    "outline": "#737686",
+                    "on-secondary-fixed-variant": "#444749",
+                    "surface-tint": "#0053db",
+                    "surface-variant": "#d3e4fe",
+                    "on-primary-fixed": "#00174b",
+                    "outline-variant": "#c3c6d7",
+                    "on-secondary-fixed": "#191c1e",
+                    "surface": "#f8f9ff",
+                    "secondary-fixed": "#e0e3e5",
+                    "surface-container": "#e5eeff",
+                    "secondary-fixed-dim": "#c4c7c9",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#dbe1ff",
+                    "secondary-container": "#e0e3e5",
+                    "surface-bright": "#f8f9ff",
+                    "secondary": "#5c5f61",
+                    "on-secondary-container": "#626567",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "background": "#f8f9ff",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-container-high": "#dce9ff",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#eaf1ff",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#dde1ff",
+                    "on-tertiary-fixed": "#001453",
+                    "on-tertiary-container": "#eff0ff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "primary": "#004ac6",
+                    "on-surface": "#0b1c30",
+                    "error": "#ba1a1a",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#b4c5ff",
+                    "primary-container": "#2563eb",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#eeefff",
+                    "inverse-surface": "#213145",
+                    "on-surface-variant": "#434655",
+                    "on-background": "#0b1c30",
+                    "tertiary-fixed-dim": "#b8c4ff",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#173bab",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xs": "8px",
+                    "xl": "32px",
+                    "container-margin": "40px",
+                    "sm": "12px",
+                    "md": "16px",
+                    "gutter": "20px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "title-md": ["Hanken Grotesk"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d3e4fe;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b4c5ff;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center w-full px-container-margin h-16 z-50">
+<div class="flex items-center gap-xl">
+<span class="font-display-lg text-[24px] font-bold text-primary">InsightFlow AI</span>
+<nav class="hidden md:flex items-center gap-xs">
+<a class="text-on-surface-variant hover:text-primary px-4 py-1 font-label-md text-label-md transition-colors duration-200" href="#">AI Summary</a>
+<a class="bg-primary text-on-primary rounded-full px-4 py-1 font-label-md text-label-md scale-95 transition-transform" href="#">Doubt Bot</a>
+<a class="text-on-surface-variant hover:text-primary px-4 py-1 font-label-md text-label-md transition-colors duration-200" href="#">Flashcards</a>
+<a class="text-on-surface-variant hover:text-primary px-4 py-1 font-label-md text-label-md transition-colors duration-200" href="#">Practice Exam</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full text-label-md focus:ring-2 focus:ring-primary-container outline-none w-64 transition-all" placeholder="Search insights..." type="text"/>
+</div>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female researcher in a bright, modern office with soft daylight. She has a focused expression, wearing glasses and a minimalist grey blazer, embodying a Corporate Modern academic aesthetic. The background is slightly blurred with hints of architectural sketches and a clean glass whiteboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9V8p8nMR9FsO1fBhGptPqWCU6dB8Z3zHHpjaKrJxb1Dua7yP5sxVO5f8CaVxOgn05V53GYVX8aMYxNj0xX5U0J9eZLNd0WBF4V-cv4faX32X2hCVVl2DvIiXRHsci4f0BzIBNlKyvxd0Gh9IHul5pGUV_gypZrBz1waNaX6Hj2ngJZFtWEHeX9Sgp48b9Qk3ML4pif7G6s3pDml-_m1ECUDkMY2gbD44OAziAmWiiUIr-ymF5_b2PTgiYsQQ-t36wGBY91bRUywDn"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<aside class="bg-surface-container-low border-r border-outline-variant w-80 flex flex-col py-lg shrink-0 overflow-y-auto">
+<div class="px-lg mb-xl">
+<div class="flex items-center gap-sm mb-base">
+<div class="p-2 bg-primary-container text-on-primary-container rounded-lg">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface">Summarization Source</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Configure processing</p>
+</div>
+</div>
+</div>
+<div class="px-lg mb-md">
+<div class="flex bg-surface-container-highest p-1 rounded-lg">
+<button class="flex-1 py-1.5 text-label-sm font-label-sm bg-surface-container-lowest text-primary rounded-md shadow-sm">Academic Papers</button>
+<button class="flex-1 py-1.5 text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors">Custom Text Box</button>
+</div>
+</div>
+<div class="flex flex-col gap-xs px-lg flex-1">
+<label class="text-[11px] font-bold text-outline uppercase tracking-wider mb-base">Select preseeded research</label>
+<!-- Active Item -->
+<div class="p-md bg-surface-container-highest border-l-2 border-primary rounded-r-xl cursor-pointer">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="schema">schema</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary font-bold">Cognitive Load Theory and Pedagogical Design.pdf</span>
+<span class="text-[12px] text-on-surface-variant line-clamp-1">Cognitive Load Theory (CLT), originally developed by John Sweller...</span>
+</div>
+</div>
+</div>
+<div class="p-md hover:bg-surface-container-high rounded-xl transition-all cursor-pointer group">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="description">description</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Systems Memory Consolidation in Sleep.txt</span>
+<span class="text-[12px] text-on-secondary-container line-clamp-1">Systems memory consolidation is a biological process...</span>
+</div>
+</div>
+</div>
+<div class="p-md hover:bg-surface-container-high rounded-xl transition-all cursor-pointer group">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="description">description</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">Quantum Superposition &amp; Entanglement.docx</span>
+<span class="text-[12px] text-on-secondary-container line-clamp-1">Quantum superposition and entanglement are two fundamental principles...</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-auto px-lg pt-lg flex flex-col gap-md">
+<div class="grid grid-cols-2 gap-sm">
+<div class="flex flex-col gap-base">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Format</label>
+<select class="bg-surface-container-lowest border border-outline-variant rounded-lg px-2 py-1.5 text-label-sm focus:ring-primary focus:border-primary">
+<option>Bullet Points</option>
+<option>Paragraphs</option>
+</select>
+</div>
+<div class="flex flex-col gap-base">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Target Length</label>
+<select class="bg-surface-container-lowest border border-outline-variant rounded-lg px-2 py-1.5 text-label-sm focus:ring-primary focus:border-primary">
+<option>Medium Standard</option>
+<option>Short Concise</option>
+</select>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary py-3 rounded-xl font-label-md text-label-md flex items-center justify-center gap-sm hover:opacity-90 transition-opacity active:opacity-80">
+<span class="material-symbols-outlined text-[18px]" data-icon="auto_awesome">auto_awesome</span>
+                    Generate Summary
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex overflow-hidden">
+<div class="flex-1 flex flex-col min-w-0">
+<!-- Chat Header -->
+<div class="h-16 px-xl flex items-center justify-between border-b border-outline-variant bg-surface-container-lowest">
+<div class="flex items-center gap-md">
+<div class="h-10 w-10 rounded-full bg-tertiary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+</div>
+<div>
+<h1 class="font-title-md text-title-md text-on-surface">Doubt Bot: Cognitive Load Theory</h1>
+<div class="flex items-center gap-xs">
+<span class="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Grounded in <span class="font-bold text-primary">Cognitive Load.pdf</span></span>
+</div>
+</div>
+</div>
+<div class="flex gap-sm">
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="ios_share">ios_share</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Chat History -->
+<div class="flex-1 overflow-y-auto px-xl py-xl space-y-xl bg-[#F8FAFC]">
+<!-- User Message -->
+<div class="flex justify-end items-start gap-md">
+<div class="max-w-[70%] bg-primary-container text-white p-lg rounded-2xl rounded-tr-none shadow-sm">
+<p class="font-body-md text-body-md">Can you explain the difference between intrinsic and extraneous cognitive load?</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-outline-variant shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait-style close up of the user's avatar, representing a modern student. The image is clean and bright, set against a soft bokeh background of a university library. The lighting is natural and inviting, fitting the Academic Minimalist theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgdndp8iE3qUgXzJa-GdE2WtDAZo881Dezb2rkp5v-hrd67ZTk8nLmiAzf8B5evIP3hHq8tasJODM7Cjc6yMvQaE0U3p2GQl1712au3hs6-UqClvEUj8JXksLAy2WvqMD0VW6gQjlh7A20pWSonbwo2hzxdRgNS9d7KpedtppfULM1JOssoG18rJMd_sZkKhe76oNqs1LczL2g0savsT6udWoYXOu5duqoirU6LQPLbfpBypmutO0s9kldVjJZ5hWWXu-jQ47eTRYO"/>
+</div>
+</div>
+<!-- AI Message -->
+<div class="flex items-start gap-md">
+<div class="w-8 h-8 rounded-full bg-tertiary-container shrink-0 flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="smart_toy">smart_toy</span>
+</div>
+<div class="max-w-[80%] bg-surface-container-lowest border border-outline-variant p-lg rounded-2xl rounded-tl-none shadow-sm relative group">
+<div class="absolute -top-3 left-4 flex gap-xs">
+<span class="bg-surface-container-high text-primary px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest border border-outline-variant">Source: Page 4</span>
+</div>
+<div class="space-y-md text-on-surface">
+<p class="font-body-md text-body-md">Based on the provided text, the primary difference lies in the source of the load relative to the learning task:</p>
+<ul class="list-disc pl-md space-y-sm font-body-md text-body-md">
+<li><strong class="text-primary">Intrinsic Cognitive Load:</strong> This is the inherent difficulty associated with a specific instructional topic. It is determined by the "element interactivity" of the task. For example, learning simple vocabulary has lower intrinsic load than learning complex grammatical structures.</li>
+<li><strong class="text-primary">Extraneous Cognitive Load:</strong> This refers to load that does not contribute to learning. It is created by the way information is presented. Poor instructional design (like a confusing layout or irrelevant animations) increases this load, taking up mental resources that should be used for learning.</li>
+</ul>
+<p class="font-body-md text-body-md">The goal of effective pedagogical design is to <span class="italic">manage</span> intrinsic load while <span class="italic">minimizing</span> extraneous load.</p>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="flex gap-md">
+<button class="text-on-surface-variant hover:text-primary flex items-center gap-xs font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="thumb_up">thumb_up</span> Helpful
+                                    </button>
+<button class="text-on-surface-variant hover:text-primary flex items-center gap-xs font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="content_copy">content_copy</span> Copy
+                                    </button>
+</div>
+<span class="text-on-surface-variant italic font-label-sm text-label-sm">Ref: Sweller (1988)</span>
+</div>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex justify-end items-start gap-md">
+<div class="max-w-[70%] bg-primary-container text-white p-lg rounded-2xl rounded-tr-none shadow-sm">
+<p class="font-body-md text-body-md">How does this relate to instructional design?</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-outline-variant shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User avatar icon, small and clean." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_-wj6iG4Ka4HIal7c14XSYv3qVxcW0fCwHYofBmJHCC75DJclO7upeKh-iblinQAx0aJsSV9Y6ILXnvsiU89ZqQYKCT_q3HALlFYW-uAfUWfqAZgZrZAF3CsfvpXY2gy6a-UbSHS4IZrLn7mUsljtsxgXvfZnq-KGLS4eDzytkhPbL4rDUDLN4glj1N_A4QOyINiOzQZ0_tQEdr3n7fZxoX1HW1agwuNu8oJl9kYhqYfK0HYBwe0e9cZvCEvDXkdLHihl8CbpJe2F"/>
+</div>
+</div>
+<!-- Bot Thinking State -->
+<div class="flex items-start gap-md">
+<div class="w-8 h-8 rounded-full bg-tertiary-container shrink-0 flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="smart_toy">smart_toy</span>
+</div>
+<div class="flex items-center gap-xs p-md bg-surface-container border border-outline-variant rounded-full">
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-bounce"></span>
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-xl bg-surface-container-lowest border-t border-outline-variant">
+<div class="max-w-4xl mx-auto">
+<div class="flex gap-md mb-md overflow-x-auto pb-xs">
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container border border-outline-variant rounded-full font-label-sm text-label-sm text-on-surface-variant hover:border-primary hover:text-primary transition-all flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="find_in_page">find_in_page</span>
+                                Ask about a specific page
+                            </button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container border border-outline-variant rounded-full font-label-sm text-label-sm text-on-surface-variant hover:border-primary hover:text-primary transition-all flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="summarize">summarize</span>
+                                Summarize this section
+                            </button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container border border-outline-variant rounded-full font-label-sm text-label-sm text-on-surface-variant hover:border-primary hover:text-primary transition-all flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="quiz">quiz</span>
+                                Quiz me on load types
+                            </button>
+</div>
+<div class="relative bg-white border border-outline-variant rounded-2xl shadow-md p-md focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<textarea class="w-full bg-transparent border-none focus:ring-0 resize-none font-body-md text-body-md text-on-surface min-h-[60px]" placeholder="Type your doubt here..." rows="2"></textarea>
+<div class="flex justify-between items-center mt-md">
+<div class="flex gap-sm">
+<button class="p-2 text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="attachment">attachment</span>
+</button>
+<button class="p-2 text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-xl font-label-md text-label-md flex items-center gap-sm hover:opacity-90 transition-opacity">
+                                    Send message
+                                    <span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Context -->
+<aside class="w-72 bg-surface-container-low border-l border-outline-variant flex flex-col p-lg gap-xl hidden lg:flex">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface mb-md">Key Concepts</h3>
+<div class="flex flex-wrap gap-xs">
+<span class="bg-surface-container-highest px-3 py-1.5 rounded-lg text-label-sm text-primary font-bold">Element Interactivity</span>
+<span class="bg-surface-container-highest px-3 py-1.5 rounded-lg text-label-sm text-primary font-bold">Working Memory</span>
+<span class="bg-surface-container-highest px-3 py-1.5 rounded-lg text-label-sm text-primary font-bold">Germane Load</span>
+<span class="bg-surface-container-highest px-3 py-1.5 rounded-lg text-label-sm text-primary font-bold">Schema Acquisition</span>
+<span class="bg-surface-container-highest px-3 py-1.5 rounded-lg text-label-sm text-primary font-bold">Split-Attention</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<h3 class="font-title-md text-title-md text-on-surface mb-md">Document Mentions</h3>
+<div class="space-y-md">
+<div class="p-md bg-surface-container-lowest border border-outline-variant rounded-xl hover:shadow-md transition-shadow cursor-pointer">
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider">Page 2</span>
+<p class="text-label-sm text-on-surface line-clamp-2 mt-1">"...the limits of working memory were first described by Miller..."</p>
+</div>
+<div class="p-md bg-surface-container-lowest border border-outline-variant rounded-xl hover:shadow-md transition-shadow cursor-pointer">
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider">Page 4</span>
+<p class="text-label-sm text-on-surface line-clamp-2 mt-1">"Intrinsic load is a function of the content's complexity..."</p>
+</div>
+<div class="p-md bg-surface-container-lowest border border-outline-variant rounded-xl hover:shadow-md transition-shadow cursor-pointer">
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider">Page 11</span>
+<p class="text-label-sm text-on-surface line-clamp-2 mt-1">"Strategies for reducing extraneous load include removing redundancy..."</p>
+</div>
+</div>
+</div>
+<div class="bg-primary-container p-md rounded-2xl text-white">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="lightbulb" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<span class="font-label-md text-label-md font-bold">Pro Tip</span>
+</div>
+<p class="text-[13px] leading-relaxed opacity-90">Ask me to compare "intrinsic load" with "germane load" to understand the full CLT model!</p>
+</div>
+</aside>
+</main>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        // Simple chat scroll to bottom animation helper
+        const chatContainer = document.querySelector('.overflow-y-auto');
+        if (chatContainer) {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Active state toggles for side cards
+        document.querySelectorAll('.p-md.hover\\:bg-surface-container-high').forEach(card => {
+            card.addEventListener('click', () => {
+                // Potential future logic for switching documents
+                console.log('Document switched');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Practice Exam | InsightFlow AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#2c4bb9",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-container": "#626567",
+                      "inverse-surface": "#213145",
+                      "tertiary-container": "#4865d4",
+                      "surface-bright": "#f8f9ff",
+                      "surface-tint": "#0053db",
+                      "tertiary-fixed-dim": "#b8c4ff",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#0b1c30",
+                      "surface-variant": "#d3e4fe",
+                      "outline": "#737686",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface-variant": "#434655",
+                      "on-primary-container": "#eeefff",
+                      "error": "#ba1a1a",
+                      "inverse-primary": "#b4c5ff",
+                      "surface": "#f8f9ff",
+                      "outline-variant": "#c3c6d7",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-fixed-variant": "#444749",
+                      "primary-fixed": "#dbe1ff",
+                      "primary-container": "#2563eb",
+                      "on-secondary-fixed": "#191c1e",
+                      "on-primary-fixed": "#00174b",
+                      "primary": "#004ac6",
+                      "tertiary-fixed": "#dde1ff",
+                      "background": "#f8f9ff",
+                      "secondary": "#5c5f61",
+                      "on-tertiary-fixed": "#001453",
+                      "on-tertiary-fixed-variant": "#173bab",
+                      "on-primary": "#ffffff",
+                      "secondary-fixed": "#e0e3e5",
+                      "on-error": "#ffffff",
+                      "on-tertiary-container": "#eff0ff",
+                      "on-tertiary": "#ffffff",
+                      "secondary-container": "#e0e3e5",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "surface-container": "#e5eeff",
+                      "on-error-container": "#93000a",
+                      "surface-dim": "#cbdbf5",
+                      "surface-container-low": "#eff4ff",
+                      "on-background": "#0b1c30",
+                      "inverse-on-surface": "#eaf1ff",
+                      "secondary-fixed-dim": "#c4c7c9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "8px",
+                      "xl": "12px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "container-margin": "40px",
+                      "base": "4px",
+                      "xs": "8px",
+                      "xl": "32px",
+                      "sm": "12px",
+                      "md": "16px",
+                      "gutter": "20px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "label-md": ["Inter"],
+                      "title-md": ["Hanken Grotesk"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #E2E8F0;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-container-margin py-sm max-w-[1440px] mx-auto">
+<div class="flex items-center gap-xl">
+<span class="font-headline-lg text-headline-lg font-bold text-primary dark:text-inverse-primary">InsightFlow AI</span>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-colors cursor-pointer" href="#">AI Summary</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-colors cursor-pointer" href="#">Doubt Bot</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-colors cursor-pointer" href="#">Flashcards</a>
+<a class="font-body-md text-body-md text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 cursor-pointer" href="#">Practice Exam</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-xs px-md py-xs bg-surface-container rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-md w-48" placeholder="Search insights..." type="text"/>
+</div>
+<button class="material-symbols-outlined p-xs hover:bg-surface-container rounded-full transition-colors">notifications</button>
+<button class="material-symbols-outlined p-xs hover:bg-surface-container rounded-full transition-colors">settings</button>
+<button class="px-md py-xs bg-primary text-on-primary rounded-lg font-label-md hover:opacity-90 transition-opacity">Upgrade</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a young academic researcher with a neutral background. The lighting is soft and natural, emphasizing a high-focus scholarly atmosphere. The image has a clean, minimalist aesthetic that fits perfectly within a modern corporate UI design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJWc_RnC9ItjIc3zNpdUAvxVutSTNpurU4lx5v_jjaLy8R2SO7r83igN4sXPfmbEfYaSgHMZtTxT6Y7RojaTuXxAhva02CSqV2fZ2qClLYT4jPSmIPFhiTeVKSZcaamtenmVcg2WQ7VvR9uvn8UVor-ua7SbsCSUU2hEM7f1C8QbVvIRrb_f3Ngm2FpGkYEZVvXb_q-3dObDD10mTlPrSnMf37QLOsYxo7iClNY7R2-MYrBfp3ULPWVv3B7YrY0HkDNaMw4bgAAJ06"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex max-w-[1440px] mx-auto relative">
+<!-- SideNavBar -->
+<aside class="bg-surface-container-low dark:bg-surface-container h-screen w-80 fixed left-0 top-0 border-r border-outline-variant p-md pt-24 z-40 hidden md:block">
+<div class="flex flex-col h-full">
+<div class="flex items-center gap-md mb-xl p-md bg-surface-container rounded-xl">
+<div class="w-10 h-10 bg-primary-container text-on-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface font-bold">Current Workspace</p>
+<p class="text-xs text-on-surface-variant">Deep Learning Thesis</p>
+</div>
+</div>
+<nav class="flex flex-col gap-xs flex-grow">
+<a class="flex items-center gap-md text-secondary-container-on-secondary-fixed-variant px-md py-sm hover:bg-secondary-fixed-dim transition-all rounded-lg active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">source</span>
+<span class="font-label-md text-label-md">Sources</span>
+</a>
+<a class="flex items-center gap-md text-secondary-container-on-secondary-fixed-variant px-md py-sm hover:bg-secondary-fixed-dim transition-all rounded-lg active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-md text-label-md">Summarization</span>
+</a>
+<a class="flex items-center gap-md text-secondary-container-on-secondary-fixed-variant px-md py-sm hover:bg-secondary-fixed-dim transition-all rounded-lg active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">highlight</span>
+<span class="font-label-md text-label-md">Highlighting</span>
+</a>
+<a class="flex items-center gap-md text-secondary-container-on-secondary-fixed-variant px-md py-sm hover:bg-secondary-fixed-dim transition-all rounded-lg active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">file_download</span>
+<span class="font-label-md text-label-md">Export</span>
+</a>
+<div class="mt-xl pt-xl border-t border-outline-variant">
+<button class="w-full flex items-center justify-center gap-sm bg-primary-container text-on-primary-container py-md rounded-lg font-bold hover:opacity-90 transition-all">
+<span class="material-symbols-outlined">upload_file</span>
+                            Upload Document
+                        </button>
+</div>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-md flex flex-col gap-xs">
+<a class="flex items-center gap-md text-secondary-container-on-secondary-fixed-variant px-md py-sm hover:bg-secondary-fixed-dim transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</a>
+<a class="flex items-center gap-md text-secondary-container-on-secondary-fixed-variant px-md py-sm hover:bg-secondary-fixed-dim transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Log Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-80 px-xl py-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Left Pane: Exam Content -->
+<section class="lg:col-span-8 space-y-xl">
+<header>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-xs">Practice Exam</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Cognitive Load Theory: Foundations and Applications</p>
+</header>
+<!-- Type Switcher -->
+<div class="bg-surface-container-low p-xs rounded-xl inline-flex gap-xs border border-outline-variant">
+<button class="px-xl py-sm rounded-lg font-label-md bg-primary text-on-primary shadow-sm transition-all" id="tab-mcq" onclick="switchMode('mcq')">Multiple Choice</button>
+<button class="px-xl py-sm rounded-lg font-label-md text-on-surface-variant hover:bg-surface-variant transition-all" id="tab-theory" onclick="switchMode('theory')">Theory & Application</button>
+</div>
+<!-- MCQ Section Container -->
+<div class="bg-white p-xl rounded-xl border border-outline-variant shadow-sm transition-all duration-300" id="section-mcq">
+<div class="flex items-start gap-md mb-lg">
+<span class="bg-primary-container text-on-primary-container px-sm py-xs rounded text-label-sm">Question 4 of 20</span>
+<h2 class="font-title-md text-title-md text-on-surface">Which component of CLT refers to the effort required to process the core content of the information?</h2>
+</div>
+<div class="space-y-md mb-xl">
+<label class="flex items-center gap-md p-md border border-outline-variant rounded-lg cursor-pointer hover:border-primary hover:bg-surface-container transition-all">
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="mcq" type="radio"/>
+<span class="font-body-md">A. Extraneous Cognitive Load</span>
+</label>
+<label class="flex items-center gap-md p-md border border-primary bg-surface-container-low rounded-lg cursor-pointer transition-all">
+<input checked="" class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="mcq" type="radio"/>
+<span class="font-body-md">B. Intrinsic Cognitive Load</span>
+</label>
+<label class="flex items-center gap-md p-md border border-outline-variant rounded-lg cursor-pointer hover:border-primary hover:bg-surface-container transition-all">
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="mcq" type="radio"/>
+<span class="font-body-md">C. Germane Cognitive Load</span>
+</label>
+<label class="flex items-center gap-md p-md border border-outline-variant rounded-lg cursor-pointer hover:border-primary hover:bg-surface-container transition-all">
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="mcq" type="radio"/>
+<span class="font-body-md">D. Cognitive Overload</span>
+</label>
+</div>
+<div class="flex justify-between items-center">
+<button class="flex items-center gap-xs text-on-surface-variant font-label-md hover:text-primary transition-colors">
+<span class="material-symbols-outlined">arrow_back</span> Previous
+                            </button>
+<button class="bg-primary text-on-primary px-xl py-md rounded-lg font-label-md hover:bg-primary-container shadow-md transition-all active:scale-95">Check Answer</button>
+</div>
+</div>
+<!-- Theory Section Container (Hidden by default) -->
+<div class="hidden bg-white p-xl rounded-xl border border-outline-variant shadow-sm transition-all duration-300" id="section-theory">
+<div class="flex items-start gap-md mb-lg">
+<span class="bg-tertiary-container text-on-tertiary-container px-sm py-xs rounded text-label-sm">Application Task</span>
+<h2 class="font-title-md text-title-md text-on-surface">Explain the relationship between Working Memory and Long-Term Memory in the context of CLT. How do schemas facilitate processing?</h2>
+</div>
+<div class="mb-xl">
+<div class="flex items-center gap-sm mb-xs px-xs border-b border-outline-variant pb-xs">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-xs rounded transition-colors">format_bold</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-xs rounded transition-colors">format_italic</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-xs rounded transition-colors">format_list_bulleted</button>
+<div class="w-px h-4 bg-outline-variant mx-xs"></div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary p-xs rounded transition-colors">link</button>
+</div>
+<textarea class="w-full h-64 bg-surface-container-lowest border-none focus:ring-2 focus:ring-primary-fixed rounded-lg p-md text-body-md resize-none" placeholder="Type your comprehensive response here..." style="min-height: 250px;"></textarea>
+</div>
+<div class="flex justify-end gap-md">
+<button class="border border-outline px-xl py-md rounded-lg font-label-md hover:bg-surface-variant transition-all">Save Draft</button>
+<button class="bg-primary text-on-primary px-xl py-md rounded-lg font-label-md hover:bg-primary-container shadow-md transition-all">Submit Response</button>
+</div>
+</div>
+<!-- AI Hint Card -->
+<div class="glass-panel p-lg rounded-xl flex items-start gap-md border-l-4 border-l-primary">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<div>
+<p class="font-label-md text-primary font-bold">InsightFlow Pro Tip</p>
+<p class="text-body-md text-on-surface-variant">Remember that Germane load is considered "productive" load—it's the effort that directly contributes to schema construction and automation.</p>
+</div>
+</div>
+</section>
+<!-- Right Pane: Progress & Stats -->
+<aside class="lg:col-span-4 space-y-xl">
+<div class="bg-white p-xl rounded-xl border border-outline-variant sticky top-32">
+<h3 class="font-title-md text-title-md text-on-surface mb-lg">Exam Progress</h3>
+<!-- Timer -->
+<div class="flex items-center justify-between mb-xl p-md bg-error-container text-on-error-container rounded-xl">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined animate-pulse">timer</span>
+<span class="font-bold text-xl">24:12</span>
+</div>
+<span class="text-label-sm">Time Remaining</span>
+</div>
+<!-- Progress Bar -->
+<div class="space-y-xs mb-xl">
+<div class="flex justify-between font-label-md text-on-surface-variant">
+<span>Completion</span>
+<span class="text-primary font-bold">45%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-tertiary-container w-[45%] rounded-full transition-all duration-500"></div>
+</div>
+</div>
+<!-- Question Grid -->
+<div class="grid grid-cols-5 gap-xs mb-xl">
+<div class="aspect-square flex items-center justify-center border border-primary bg-primary text-on-primary rounded font-label-sm">1</div>
+<div class="aspect-square flex items-center justify-center border border-primary bg-primary text-on-primary rounded font-label-sm">2</div>
+<div class="aspect-square flex items-center justify-center border border-primary bg-primary text-on-primary rounded font-label-sm">3</div>
+<div class="aspect-square flex items-center justify-center border-2 border-primary bg-primary-container text-on-primary-container rounded font-label-sm">4</div>
+<div class="aspect-square flex items-center justify-center border border-outline-variant text-on-surface-variant rounded font-label-sm">5</div>
+<div class="aspect-square flex items-center justify-center border border-outline-variant text-on-surface-variant rounded font-label-sm">6</div>
+<div class="aspect-square flex items-center justify-center border border-outline-variant text-on-surface-variant rounded font-label-sm">7</div>
+<div class="aspect-square flex items-center justify-center border border-outline-variant text-on-surface-variant rounded font-label-sm">8</div>
+<div class="aspect-square flex items-center justify-center border border-outline-variant text-on-surface-variant rounded font-label-sm">9</div>
+<div class="aspect-square flex items-center justify-center border border-outline-variant text-on-surface-variant rounded font-label-sm">10</div>
+</div>
+<!-- Stat Row -->
+<div class="space-y-sm mb-xl">
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">check_circle</span> Correct So Far</span>
+<span class="font-bold">3/3</span>
+</div>
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">history</span> Avg. Speed</span>
+<span class="font-bold">42s / q</span>
+</div>
+</div>
+<button class="w-full bg-on-surface text-on-primary py-lg rounded-xl font-bold hover:opacity-90 shadow-lg transition-all active:scale-[0.98]">
+                            Finish Exam
+                        </button>
+<p class="text-center mt-md text-xs text-on-surface-variant">Results will be generated instantly using AI analysis.</p>
+</div>
+</aside>
+</div>
+</main>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        function switchMode(mode) {
+            const mcqSection = document.getElementById('section-mcq');
+            const theorySection = document.getElementById('section-theory');
+            const mcqTab = document.getElementById('tab-mcq');
+            const theoryTab = document.getElementById('tab-theory');
+
+            if (mode === 'mcq') {
+                mcqSection.classList.remove('hidden');
+                theorySection.classList.add('hidden');
+                
+                mcqTab.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+                mcqTab.classList.remove('text-on-surface-variant', 'hover:bg-surface-variant');
+                
+                theoryTab.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+                theoryTab.classList.add('text-on-surface-variant', 'hover:bg-surface-variant');
+            } else {
+                mcqSection.classList.add('hidden');
+                theorySection.classList.remove('hidden');
+                
+                theoryTab.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+                theoryTab.classList.remove('text-on-surface-variant', 'hover:bg-surface-variant');
+                
+                mcqTab.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+                mcqTab.classList.add('text-on-surface-variant', 'hover:bg-surface-variant');
+            }
+        }
+
+        // Add small hover effects to side items
+        document.querySelectorAll('label').forEach(label => {
+            label.addEventListener('click', () => {
+                document.querySelectorAll('label').forEach(l => l.classList.remove('border-primary', 'bg-surface-container-low'));
+                label.classList.add('border-primary', 'bg-surface-container-low');
+            });
+        });
+    </script>
+</body></html>

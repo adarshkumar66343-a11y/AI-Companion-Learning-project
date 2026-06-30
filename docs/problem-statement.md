@@ -1,19 +1,11 @@
-
 # Problem Statement
 
 ## Problem
-
-Students often struggle with:
-- Understanding complex topics
-- Maintaining study consistency
-- Creating effective study plans
-- Tracking learning progress
+Students struggle to manage dense syllabus materials, track study consistency, design effective review plans, and test their comprehension against grounded academic texts.
 
 ## Solution
-
-AI Learning Companion is an AI-powered mentor that helps students:
-- Learn concepts interactively
-- Generate personalized study plans
-- Track progress
-- Identify weak areas
-- Generate quizzes and practice questions
+Brainzy solves this by integrating:
+- **Academic Storage**: Direct document context uploads for syllabus grounding.
+- **Tutor Chat Bot**: Real-time Q&A answering doubt queries grounded in files.
+- **Planner & Streaks**: Auto-scheduled revision logs, checklists, and streaks.
+- **Interactive Quizzes**: Dynamic MCQ generation and recall decks.

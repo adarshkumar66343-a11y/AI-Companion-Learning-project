@@ -1,0 +1,16 @@
+SYSTEMS MEMORY CONSOLIDATION IN SLEEP
+
+Page 1
+Systems memory consolidation is the process by which newly acquired, fragile memories are transformed into stable, long-term representations. This process involves a reorganization of brain networks, particularly shifting the primary storage site of declarative memories from the hippocampus to the neocortex.
+
+Page 2
+During initial learning, the hippocampus acts as a fast-learning, temporary buffer that links the various features of an event. Over time, particularly during sleep, these temporary representations are repeatedly reactivated, driving gradual plastic changes in the neocortex, which acts as a slow-learning, high-capacity repository.
+
+Page 3
+Sleep plays a critical active role in systems consolidation:
+1. Slow-Wave Sleep (SWS): The active system consolidation theory suggests that during SWS, slow oscillations (<1 Hz) coordinate the reactivation of memory traces. This is characterized by the synchronization of cortical slow waves, hippocampal sharp-wave ripples, and thalamic sleep spindles.
+2. REM Sleep: Subsequent REM sleep is thought to facilitate synaptic consolidation, stabilizing the newly transferred neocortical schemas through localized synaptic plasticity.
+
+Page 4
+Sleep-associated consolidation not only stabilizes memories but also abstracts general rules, integrates new information with pre-existing schemas, and supports problem-solving by reorganizing memory networks.
+Learning is therefore not complete at the end of a study session; sleep is an active partner in schema automation.
