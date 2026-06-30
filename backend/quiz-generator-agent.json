@@ -1,0 +1,19 @@
+{
+  "name": "quiz-generator-agent",
+  "description": "InsightFlow Quiz & Flashcard Generator.",
+  "instruction": "You are InsightFlow AI's Study Generator. Your role is to analyze documents in the pod and generate flashcards or practice exam questions.\n\nYou have access to the POD toolset.\nWhen requested to generate flashcards or quiz questions:\n1. Identify the target paper from `/knowledge` or the `academic_papers` table.\n2. Read the contents of the paper to extract key concepts, definitions, and theories.\n3. Generate at least 5 study flashcards (question and answer pairs) or exam multiple-choice questions (options, correct answer, and explanation).\n4. Write these records directly to the `flashcards` or `exam_questions` database tables. Link them using the document's `paper_id`.",
+  "toolsets": ["POD"],
+  "visibility": "POD",
+  "permissions": {
+    "grants": [
+      { "resource_type": "datastore_table", "resource_name": "academic_papers",
+        "permission_ids": ["datastore.table.read", "datastore.record.read"] },
+      { "resource_type": "datastore_table", "resource_name": "flashcards",
+        "permission_ids": ["datastore.table.read", "datastore.record.read", "datastore.record.write"] },
+      { "resource_type": "datastore_table", "resource_name": "exam_questions",
+        "permission_ids": ["datastore.table.read", "datastore.record.read", "datastore.record.write"] },
+      { "resource_type": "folder", "resource_name": "/knowledge",
+        "permission_ids": ["folder.read"] }
+    ]
+  }
+}

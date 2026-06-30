@@ -1,0 +1,42 @@
+version: "2"
+type: backend
+tech_stack:
+  - TypeScript
+  - Next.js
+  - Node.js
+  - Lemma CLI
+features:
+  - name: Lemma API Integration
+    description: Core API endpoints serving client grounding operations, document list, and doubt queries
+    files:
+      - frontend/src/app/api/lemma/route.ts
+      - frontend/src/lib/lemma.ts
+    endpoints:
+      - method: GET
+        path: /api/lemma?action=listPapers
+        description: List all loaded papers
+        auth_required: false
+        response_schema:
+          "200": AcademicPaper[]
+      - method: GET
+        path: /api/lemma?action=listFlashcards&paperId={paperId}
+        description: List flashcards for a specific paper
+        auth_required: false
+        response_schema:
+          "200": Flashcard[]
+      - method: GET
+        path: /api/lemma?action=listExamQuestions&paperId={paperId}
+        description: List multiple choice exam questions for a specific paper
+        auth_required: false
+        response_schema:
+          "200": ExamQuestion[]
+      - method: POST
+        path: /api/lemma
+        description: Handle write operations such as createPaper, rateFlashcard, askDoubt, or generateStudyMaterials
+        auth_required: false
+        request_schema:
+          body:
+            action: string
+        response_schema:
+          "200": object
+known_limitations: []

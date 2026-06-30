@@ -1,0 +1,23 @@
+COGNITIVE LOAD THEORY AND PEDAGOGICAL DESIGN
+Originally developed by John Sweller (1988)
+
+Page 1
+Cognitive Load Theory (CLT) is an instructional design theory based on our understanding of human cognitive architecture. It suggests that learning is most effective when the design of instruction aligns with the limitations and capabilities of the human mind. The theory centers on how information is processed and stored in memory.
+
+Page 2
+Our cognitive architecture consists of two primary memory systems:
+1. Working Memory (WM): This is where active conscious processing occurs. However, working memory is extremely limited in both capacity (able to hold only about 4 to 7 items or elements simultaneously) and duration (holding information for only a few seconds without rehearsal). Working memory can easily become overloaded if too much information is presented at once.
+2. Long-Term Memory (LTM): This is our permanent repository of knowledge, which has an effectively unlimited capacity. Information in long-term memory is organized into structured networks of knowledge called "schemas." Once a schema is constructed and automated, it can be retrieved as a single element, which dramatically reduces the load on working memory.
+
+Page 3
+The total cognitive load imposed by a learning task consists of three distinct types:
+1. Intrinsic Cognitive Load: This is the inherent difficulty of the learning material itself, determined by its "element interactivity." Element interactivity is high when many concepts must be understood simultaneously to complete a task (e.g., learning complex programming grammar vs. learning simple vocabulary).
+2. Extraneous Cognitive Load: This is the unnecessary mental effort required by poor instructional design or presentation. For example, if a textbook splits related text and diagrams across different pages, the student must split their attention to integrate them, wasting precious working memory capacity.
+3. Germane Cognitive Load: This is the productive mental effort dedicated to constructing and automating schemas. It is the "good" load that leads directly to learning and skill acquisition.
+
+Page 4
+Effective pedagogical designs aim to manage intrinsic load, minimize extraneous load, and maximize germane load.
+Key strategies for reducing extraneous load include:
+- The Split-Attention Effect: Integrate related text and diagrams physically to prevent the student's eyes from having to search between them.
+- The Redundancy Effect: Avoid presenting the same information in multiple redundant modalities simultaneously (e.g., do not read a slide word-for-word while students are reading it silently).
+- The Worked-Example Effect: Provide fully solved step-by-step examples before asking students to solve similar problems on their own.

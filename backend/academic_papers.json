@@ -1,0 +1,12 @@
+{
+  "name": "academic_papers",
+  "primary_key_column": "id",
+  "enable_rls": false,
+  "visibility": "POD",
+  "columns": [
+    { "name": "title", "type": "TEXT", "required": true },
+    { "name": "filename", "type": "TEXT", "required": true },
+    { "name": "file_path", "type": "TEXT", "required": true },
+    { "name": "summary", "type": "TEXT", "required": false }
+  ]
+}

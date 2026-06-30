@@ -1,0 +1,22 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "executionArgs": {
+    "projectName": "frontend",
+    "projectPath": "d:\\AI Project\\AI-Companion-Learning-project\\frontend",
+    "testIds": [
+      "TC002",
+      "TC003",
+      "TC006",
+      "TC011"
+    ],
+    "additionalInstruction": "The 4 blocked tests have been rewritten. TC002, TC003, TC006, TC011 now navigate via 'Launch App' link instead of uploading files — the backend already has preloaded documents. Run these 4 tests only.",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-8VeX6vqrwbCflgiwckS2NM7q8ggAVJx8WZhdfHf3ZBP8xSP2wqchy__LcLBlzz6E6h2jYbTRm_1HnCdvhPaLh0LpibgbZqbj8mK8DPQ3w1USoEK826K5Sv6JgMP8uZ5zsN4"
+    }
+  },
+  "serverPort": 55984
+}

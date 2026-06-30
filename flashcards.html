@@ -1,0 +1,333 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Flashcards - InsightFlow AI</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#dde1ff",
+                    "outline": "#737686",
+                    "secondary-container": "#e0e3e5",
+                    "tertiary-container": "#4865d4",
+                    "secondary-fixed-dim": "#c4c7c9",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#f8f9ff",
+                    "primary": "#004ac6",
+                    "on-tertiary-container": "#eff0ff",
+                    "secondary": "#5c5f61",
+                    "on-surface": "#0b1c30",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-high": "#dce9ff",
+                    "tertiary": "#2c4bb9",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#dbe1ff",
+                    "background": "#f8f9ff",
+                    "secondary-fixed": "#e0e3e5",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container": "#e5eeff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#2563eb",
+                    "on-primary-fixed": "#00174b",
+                    "surface-container-highest": "#d3e4fe",
+                    "inverse-surface": "#213145",
+                    "inverse-primary": "#b4c5ff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-primary-container": "#eeefff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-background": "#0b1c30",
+                    "tertiary-fixed-dim": "#b8c4ff",
+                    "on-tertiary-fixed-variant": "#173bab",
+                    "surface-container-low": "#eff4ff",
+                    "outline-variant": "#c3c6d7",
+                    "on-secondary-container": "#626567",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#191c1e",
+                    "surface": "#f8f9ff",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#444749",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#0053db",
+                    "on-tertiary-fixed": "#001453",
+                    "on-surface-variant": "#434655"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "container-margin": "40px",
+                    "xs": "8px",
+                    "md": "16px",
+                    "gutter": "20px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Hanken Grotesk"],
+                    "title-md": ["Hanken Grotesk"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F8FAFC;
+            color: #0b1c30;
+            overflow-x: hidden;
+        }
+
+        .perspective {
+            perspective: 1000px;
+        }
+
+        .flashcard-inner {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flashcard-inner.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front, .flashcard-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .flashcard-back {
+            transform: rotateY(180deg);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-body-md">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline h-16 flex justify-between items-center px-container-margin">
+<div class="flex items-center gap-xl">
+<span class="font-display-lg text-display-lg font-bold text-primary dark:text-primary-fixed">InsightFlow AI</span>
+<nav class="hidden md:flex items-center gap-md">
+<a class="text-on-surface-variant hover:text-primary dark:text-surface-variant font-label-md text-label-md px-4 py-1 transition-colors" href="#">AI Summary</a>
+<a class="text-on-surface-variant hover:text-primary dark:text-surface-variant font-label-md text-label-md px-4 py-1 transition-colors" href="#">Doubt Bot</a>
+<a class="bg-primary text-on-primary rounded-full px-4 py-1 font-label-md text-label-md transition-transform active:scale-95" href="#">Flashcards</a>
+<a class="text-on-surface-variant hover:text-primary dark:text-surface-variant font-label-md text-label-md px-4 py-1 transition-colors" href="#">Practice Exam</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative">
+<span class="material-symbols-outlined text-outline p-2 hover:bg-surface-container-high rounded-full cursor-pointer transition-colors" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-white"></span>
+</div>
+<span class="material-symbols-outlined text-outline p-2 hover:bg-surface-container-high rounded-full cursor-pointer transition-colors" data-icon="settings">settings</span>
+<img alt="User Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a student researcher in a bright, modern academic environment. The lighting is soft and high-key, conveying focus and intelligence. The background is a minimalist blurred library setting, aligning with a corporate-modern aesthetic of blue and white tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4_KMjGY9B1_p1W6NfU_dSgSB9XpIQH-PrHQr-q71RbrlIkEPlQncPWNxJZ_H7t_U0V8ey-OQsl5XkGoZWdoUHAECjj3shD3OwJlnm7hvLcvXYSRgcTd0hD2sgpTVgLwhbccwm7yS2tPJ9XEHw_7HMkvvyKQ3uqiSWjm-fapx2cAzdhPWBdlA3C0lp97HFFp7GErY8hwdWk3AwRL77E89qlGgQfYD9g98GDZk6NK4lYH1Aj6dxWBSd1z8Y432KnocmRNBClmzIFn-n">
+</div>
+</header>
+<div class="flex h-screen pt-16">
+<!-- SideNavBar -->
+<aside class="fixed left-0 bottom-0 top-16 w-80 bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant dark:border-outline flex flex-col py-lg z-40">
+<div class="px-lg mb-xl">
+<div class="flex items-center gap-md mb-xs">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md text-primary leading-tight">Summarization Source</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Configure processing</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-sm overflow-y-auto custom-scrollbar">
+<div class="group border-l-2 border-primary bg-surface-container-highest text-primary font-bold px-lg py-md flex items-center gap-md rounded-r-xl transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md truncate w-48">Source Files</span>
+<span class="text-[10px] uppercase tracking-wider opacity-60">Cognitive Load Theory.pdf</span>
+</div>
+</div>
+<div class="group text-on-surface-variant hover:bg-surface-container-high px-lg py-md flex items-center gap-md rounded-xl transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="schema">schema</span>
+<span class="font-label-md text-label-md">Output Format</span>
+</div>
+<div class="group text-on-surface-variant hover:bg-surface-container-high px-lg py-md flex items-center gap-md rounded-xl transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="straighten">straighten</span>
+<span class="font-label-md text-label-md">Target Length</span>
+</div>
+<div class="group text-on-surface-variant hover:bg-surface-container-high px-lg py-md flex items-center gap-md rounded-xl transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="translate">translate</span>
+<span class="font-label-md text-label-md">Language</span>
+</div>
+</nav>
+<div class="mt-auto px-lg pt-lg border-t border-outline-variant space-y-md">
+<button class="w-full bg-primary text-on-primary py-sm rounded-lg font-label-md text-label-md transition-transform hover:opacity-90 active:scale-95 shadow-sm">
+                    Generate Summary
+                </button>
+<div class="flex flex-col gap-xs">
+<a class="flex items-center gap-md text-on-surface-variant hover:text-primary transition-colors py-2 px-2 rounded-lg hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+<span class="font-label-sm text-label-sm">Help</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:text-primary transition-colors py-2 px-2 rounded-lg hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="history">history</span>
+<span class="font-label-sm text-label-sm">History</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="ml-80 mr-80 flex-1 p-xl flex flex-col gap-xl overflow-y-auto">
+<!-- Header Section -->
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Study Session</h1>
+<p class="text-on-surface-variant font-body-md">Cognitive Load Theory and Pedagogical Design</p>
+</div>
+<div class="flex items-center gap-md text-right">
+<div>
+<p class="font-label-sm text-label-sm text-outline mb-1">Session Progress</p>
+<div class="flex items-center gap-sm">
+<div class="w-48 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/3 transition-all duration-500"></div>
+</div>
+<span class="font-label-sm text-label-sm text-primary">Card 4 of 12</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Central Flashcard Area -->
+<div class="flex-1 flex flex-col items-center justify-center min-h-[500px]">
+<div class="perspective w-full max-w-2xl h-[400px]">
+<div class="flashcard-inner relative w-full h-full cursor-pointer group" id="flashcard">
+<!-- Front of Card -->
+<div class="flashcard-front absolute inset-0 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm flex flex-col items-center justify-center p-xl text-center">
+<span class="absolute top-lg left-lg text-[10px] uppercase tracking-widest text-outline font-bold">Back</span>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed max-w-md">Germane load refers to the effort used to create a permanent store of knowledge, or a schema. It is considered 'productive' load as it leads to learning.</p>
+</div>
+<!-- Back of Card -->
+<div class="flashcard-back absolute inset-0 bg-surface-container-lowest border-2 border-primary-container rounded-xl shadow-lg flex flex-col items-center justify-center p-xl text-center overflow-hidden">
+<!-- Subtle background pattern -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#004ac6 1px, transparent 1px); background-size: 20px 20px;"></div>
+<span class="absolute top-lg left-lg text-[10px] uppercase tracking-widest text-primary font-bold">Back (Answer)</span>
+<div class="max-w-md relative z-10">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+                                    The cognitive effort dedicated to processing information, constructing schemas, and automating mental processes. It is considered "good" load that facilitates deep learning.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Interaction Controls -->
+<div class="mt-xl w-full max-w-2xl">
+<!-- Nav Controls (Always visible) -->
+<div class="flex justify-between items-center" id="nav-controls">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors font-label-md">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span> Previous
+                        </button>
+<div class="flex items-center gap-md"><button class="border border-error text-error px-lg py-2 rounded-full font-label-md hover:bg-error-container transition-colors">Hard</button><button class="bg-primary text-on-primary px-lg py-2 rounded-full font-label-md hover:opacity-90 transition-all shadow-sm">Medium</button><button class="border border-tertiary text-tertiary px-lg py-2 rounded-full font-label-md hover:bg-tertiary-container/10 transition-colors">Easy</button></div>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors font-label-md">
+                            Next <span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Rating Controls (Visible after flip) -->
+<div class="hidden flex justify-between gap-md animate-in fade-in slide-in-from-bottom-2 duration-300" id="rating-controls">
+<button class="flex-1 bg-error-container text-on-error-container py-md rounded-xl font-label-md hover:brightness-95 transition-all flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                            Again
+                        </button>
+<button class="flex-1 bg-surface-container-highest text-on-surface-variant py-md rounded-xl font-label-md hover:bg-surface-container-high transition-all flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="sentiment_neutral">sentiment_neutral</span>
+                            Hard
+                        </button>
+<button class="flex-1 bg-primary-container text-on-primary-container py-md rounded-xl font-label-md hover:opacity-90 transition-all flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="sentiment_satisfied">sentiment_satisfied</span>
+                            Good
+                        </button>
+<button class="flex-1 bg-tertiary-container text-on-tertiary-container py-md rounded-xl font-label-md hover:opacity-90 transition-all flex flex-col items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+                            Easy
+                        </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Stats Sidebar -->
+<aside class="fixed right-0 top-16 bottom-0 w-80 bg-surface-container-lowest border-l border-outline-variant p-xl flex flex-col gap-xl">
+<h3 class="font-title-md text-title-md text-on-surface border-b border-outline-variant pb-md">Study Stats</h3>
+<div class="space-y-xl">
+<!-- Daily Goal -->
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Daily Goal</span>
+<span class="font-label-md text-label-md text-primary">15/20 Cards</span>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%] rounded-full shadow-[0_0_10px_rgba(37,99,235,0.4)]"></div>
+</div>
+</div>
+<!-- Mastery Counters -->
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-surface-container-low p-md rounded-xl text-center">
+<p class="text-[24px] font-bold text-primary">8</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Mastered</p>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl text-center">
+<p class="text-[24px] font-bold text-tertiary">4</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Learning</p>
+</div>
+</div>
+<!-- Activity Chart Placeholder -->
+<div class="bg-surface-container-low rounded-xl p-md aspect-video relative overflow-hidden flex flex-col justify-end gap-xs">
+<p class="absolute top-md left-md font-label-sm text-label-sm text-on-surface-variant">Week Engagement</p>
+<div class="flex items-end justify-between h-20 px-sm">
+<div class="w-2 bg-primary/20 h-[40%] rounded-t-sm"></div>
+<div class="w-2 bg-primary/20 h-[60%] rounded-t-sm"></div>
+<div class="w-2 bg-primary/20 h-[30%] rounded-t-sm"></div>
+</div></div></div></aside></div>
+
+</body></html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>InsightFlow AI - Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container": "#e5eeff",
+                "outline-variant": "#c3c6d7",
+                "tertiary-fixed": "#dde1ff",
+                "background": "#f8f9ff",
+                "on-tertiary-fixed-variant": "#173bab",
+                "error": "#ba1a1a",
+                "surface-container-highest": "#d3e4fe",
+                "secondary-container": "#e0e3e5",
+                "surface-bright": "#f8f9ff",
+                "inverse-primary": "#b4c5ff",
+                "inverse-surface": "#213145",
+                "on-secondary-fixed": "#191c1e",
+                "on-surface": "#0b1c30",
+                "secondary-fixed-dim": "#c4c7c9",
+                "on-error-container": "#93000a",
+                "on-secondary-container": "#626567",
+                "tertiary-container": "#4865d4",
+                "on-tertiary-fixed": "#001453",
+                "primary-fixed-dim": "#b4c5ff",
+                "on-secondary": "#ffffff",
+                "on-error": "#ffffff",
+                "surface-container-high": "#dce9ff",
+                "on-primary-fixed-variant": "#003ea8",
+                "on-primary-container": "#eeefff",
+                "surface-variant": "#d3e4fe",
+                "on-tertiary-container": "#eff0ff",
+                "primary-fixed": "#dbe1ff",
+                "surface-dim": "#cbdbf5",
+                "on-tertiary": "#ffffff",
+                "on-primary-fixed": "#00174b",
+                "secondary": "#5c5f61",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary-fixed-variant": "#444749",
+                "tertiary-fixed-dim": "#b8c4ff",
+                "primary": "#004ac6",
+                "on-surface-variant": "#434655",
+                "error-container": "#ffdad6",
+                "secondary-fixed": "#e0e3e5",
+                "surface-tint": "#0053db",
+                "tertiary": "#2c4bb9",
+                "primary-container": "#2563eb",
+                "surface-container-low": "#eff4ff",
+                "surface": "#f8f9ff",
+                "inverse-on-surface": "#eaf1ff",
+                "on-primary": "#ffffff",
+                "on-background": "#0b1c30",
+                "outline": "#737686"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "gutter": "20px",
+                "container-margin": "40px",
+                "lg": "24px",
+                "md": "16px",
+                "xl": "32px",
+                "sm": "12px",
+                "base": "4px",
+                "xs": "8px"
+            },
+            "fontFamily": {
+                "body-lg": ["Inter"],
+                "label-md": ["Inter"],
+                "headline-lg": ["Hanken Grotesk"],
+                "display-lg": ["Hanken Grotesk"],
+                "title-md": ["Hanken Grotesk"],
+                "headline-lg-mobile": ["Hanken Grotesk"],
+                "label-sm": ["Inter"],
+                "body-md": ["Inter"]
+            },
+            "fontSize": {
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #F8FAFC;
+            color: #0b1c30;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-glow {
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c3c6d7;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md bg-background">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline flex justify-between items-center w-full px-container-margin h-16 fixed top-0 z-50">
+<div class="flex items-center gap-xl">
+<span class="font-display-lg text-display-lg font-bold text-primary dark:text-primary-fixed"> Brainzy</span>
+<nav class="hidden md:flex items-center gap-md">
+<a class="bg-primary text-on-primary rounded-full px-4 py-1 font-label-md text-label-md active:scale-95 transition-transform" href="#">AI Summary</a>
+<a class="text-on-surface-variant hover:text-primary dark:text-surface-variant hover:bg-surface-container-high transition-colors duration-200 font-label-md text-label-md px-4 py-1 rounded-full" href="#">Doubt Bot</a>
+<a class="text-on-surface-variant hover:text-primary dark:text-surface-variant hover:bg-surface-container-high transition-colors duration-200 font-label-md text-label-md px-4 py-1 rounded-full" href="#">Flashcards</a>
+<a class="text-on-surface-variant hover:text-primary dark:text-surface-variant hover:bg-surface-container-high transition-colors duration-200 font-label-md text-label-md px-4 py-1 rounded-full" href="#">Practice Exam</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant ml-xs">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a young adult researcher with a neutral expression, wearing minimalist tech-apparel. The background is a soft, out-of-focus academic laboratory with clean lines and cool blue lighting, reflecting a corporate modern and highly intellectual atmosphere consistent with a professional AI tool's user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCREuw7GQ8Ok8KY1ih1He7AXIS0W-W8TzdLDD4oya99-Mf-sXqhb9HXeYQe6fvXfu6nTBQl_qp2d1H--LU7lMhIH-Qjf6rzuY8hSBvd9StUxhYX0n-ZFI9JX5DbQGLEufy8Aclr1gwdUoap4uTMjlHq2EKeempCFSgiFM0dEmrgOFeDI9JwQimdUvhPM7RrIy8xA1FZDWb6jltyXYqCmIr7ojl0ZGDNK3snkd7s6QFIt6ykBhQUEFXJd89tfgTOmr5ia6yEXWrmomAI"/>
+</div>
+</div>
+</header>
+<main class="pt-16 flex min-h-screen">
+<!-- SideNavBar / Left Column -->
+<aside class="bg-surface-container-low dark:bg-surface-dim border-r border-outline-variant dark:border-outline flex flex-col h-[calc(100vh-64px)] w-80 fixed left-0 top-16 overflow-y-auto custom-scrollbar py-lg px-md">
+<div class="mb-xl">
+<div class="flex items-center gap-xs mb-base">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+<h2 class="font-title-md text-title-md text-primary">Summarization Source</h2>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Configure processing</p>
+</div>
+<!-- Toggle Selector -->
+<div class="bg-surface-container-high p-1 rounded-lg flex mb-lg">
+<button class="flex-1 py-2 text-label-sm font-label-sm bg-white shadow-sm rounded-md text-primary transition-all duration-200">Document</button>
+<button class="flex-1 py-2 text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-container-highest rounded-md transition-all duration-200">Custom Text</button>
+</div>
+<!-- File List -->
+<div class="space-y-sm mb-xl">
+<div class="flex items-center justify-between p-3 bg-surface-container-highest border-l-2 border-primary rounded-lg active-glow">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span class="font-label-md text-label-md text-primary font-bold">Cognitive Load.pdf</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="check_circle" style='font-variation-settings: "FILL" 1;'>check_circle</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-white border border-outline-variant hover:bg-surface-container-high rounded-lg cursor-pointer transition-all">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="description">description</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Systems Memory.txt</span>
+</div>
+</div>
+<button class="w-full py-3 border-2 border-dashed border-outline-variant rounded-lg flex items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="upload">upload</span>
+<span class="font-label-sm text-label-sm">Add New File</span>
+</button>
+</div>
+<!-- Configuration Form -->
+<div class="space-y-lg flex-grow">
+<div>
+<label class="block font-label-sm text-label-sm mb-xs text-on-surface-variant uppercase tracking-wider">Output Format</label>
+<div class="relative">
+<select class="w-full h-11 pl-3 pr-10 bg-white border border-outline-variant rounded-lg appearance-none focus:ring-2 focus:ring-primary-container focus:outline-none text-body-md">
+<option>Bullet Points</option>
+<option>Paragraph</option>
+<option>Flowchart</option>
+<option>Mindmap</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm mb-xs text-on-surface-variant uppercase tracking-wider">Target Length</label>
+<div class="relative">
+<select class="w-full h-11 pl-3 pr-10 bg-white border border-outline-variant rounded-lg appearance-none focus:ring-2 focus:ring-primary-container focus:outline-none text-body-md">
+<option>Concise (1-2 pages)</option>
+<option>Standard (3-5 pages)</option>
+<option>Detailed (Comprehensive)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline" data-icon="straighten">straighten</span>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm mb-xs text-on-surface-variant uppercase tracking-wider">Language</label>
+<div class="relative">
+<select class="w-full h-11 pl-3 pr-10 bg-white border border-outline-variant rounded-lg appearance-none focus:ring-2 focus:ring-primary-container focus:outline-none text-body-md">
+<option>English (US)</option>
+<option>English (UK)</option>
+<option>Spanish</option>
+<option>German</option>
+<option>French</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline" data-icon="translate">translate</span>
+</div>
+</div>
+</div>
+<!-- CTA -->
+<div class="mt-xl pt-lg border-t border-outline-variant">
+<button class="w-full py-4 bg-primary text-on-primary rounded-lg font-title-md text-title-md flex items-center justify-center gap-sm hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" data-icon="bolt" style='font-variation-settings: "FILL" 1;'>bolt</span>
+                    Generate AI Analysis
+                </button>
+</div>
+<div class="mt-lg flex items-center justify-around">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors py-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+<span class="font-label-sm text-label-sm">Help</span>
+</button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors py-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="history">history</span>
+<span class="font-label-sm text-label-sm">History</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area / Right Column -->
+<section class="ml-80 flex-grow p-xl" style="opacity: 1; transform: translateY(0px); transition: opacity 0.8s ease-out, transform 0.8s ease-out;">
+<div class="max-w-[1000px] mx-auto h-[calc(100vh-128px)] flex flex-col">
+<!-- Empty State Container -->
+<div class="flex-grow flex flex-col items-center justify-center bg-white border border-outline-variant rounded-xl p-xl relative overflow-hidden group">
+<!-- Decorative Background Element -->
+<div class="relative z-10 flex flex-col items-center w-full h-full">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-lg">Cognitive Load Theory Flowchart</h2>
+<div class="flex-grow w-full flex items-center justify-center overflow-hidden rounded-lg border border-outline-variant/30 bg-surface-container-lowest">
+<img alt="Cognitive Load Theory Flowchart" class="max-h-full max-w-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPWjVVIvq3-EYI5SIT2cM08qt70zu6KIGhMP88nhzPsIyCwgEztLxhCb8ySct_nJMpDqZzoauc-n5obfyDnblKevNrXZjqX4eWlQ7I3xNGoIn_RQLB9nImNy5gknFesPjFp0H7uvVgvsv7__oB6XCGN9Hc1T4zvP_lYOF7VEu8Ylc31v3fzFifHWipeIKT9NkjUARkz0PbKraloYZhtpI8D1RTSE3o4jQSklN9ctjp0ZJ_ry5VPIlrrH0fQ5ocyRU-zBk7qpSnL2xt"/>
+</div>
+</div>
+<!-- Subtle Hint Arrows -->
+</div>
+<!-- Footer Info / Credits -->
+<footer class="mt-xl flex justify-between items-center px-xs">
+<div class="flex items-center gap-md">
+<span class="font-label-sm text-label-sm text-outline">v2.4.0 High-Performance Engine</span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<span class="font-label-sm text-label-sm text-outline">Context Window: 128k tokens</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-[16px] text-green-500" data-icon="cloud_done">cloud_done</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">System Ready</span>
+</div>
+</footer>
+</div>
+</section>
+</main>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebarButtons = document.querySelectorAll('aside select, aside button');
+            sidebarButtons.forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    btn.classList.add('transition-all', 'duration-200');
+                });
+            });
+
+            // Smooth fade in for the main content
+            const mainContent = document.querySelector('section');
+            mainContent.style.opacity = '0';
+            mainContent.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+                mainContent.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                mainContent.style.opacity = '1';
+                mainContent.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,11 @@
+{
+  "name": "user_progress",
+  "primary_key_column": "id",
+  "enable_rls": false,
+  "visibility": "POD",
+  "columns": [
+    { "name": "paper_id", "type": "UUID", "required": true, "foreign_key": { "references": "academic_papers.id" } },
+    { "name": "milestone", "type": "TEXT", "required": true },
+    { "name": "status", "type": "ENUM", "required": true, "default": "not_started", "options": ["not_started", "in_progress", "completed"] }
+  ]
+}

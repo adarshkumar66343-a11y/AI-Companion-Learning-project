@@ -1,109 +1,31 @@
 # System Architecture
 
 ## Overview
+Brainzy runs as a Static App Desk hosted inside a Lemma Pod, communicating client-side via the Lemma TypeScript SDK (`lemma-sdk`).
 
-AI Learning Companion is built using a modern architecture consisting of:
-
-* Stitch (UI/UX Design)
-* Frontend Application
-* Lemma Platform
-* AI Agents
-* Database Layer
-
----
-
-## Architecture Flow
-
-Student
-↓
-Frontend (React / Web App)
-↓
-API Layer
-↓
-Lemma Platform
-↓
-├── Tutor Agent
-├── Planner Agent
-├── Quiz Agent
-└── Analytics Agent
-↓
-Database
-↓
-Progress & Learning Data
+```mermaid
+graph TD
+    Student[Student User] -->|Interacts| Frontend[Next.js Static Pages]
+    Frontend -->|Lemma SDK Calls| LemmaAPI[Lemma Cloud API]
+    LemmaAPI -->|Queries/Updates| PodTables[Pod Datastore Tables]
+    LemmaAPI -->|Uploads/Reads| PodFiles[Pod File Storage]
+    LemmaAPI -->|Invokes Agents| PodAgents[tutor-agent / quiz-generator-agent]
+```
 
 ---
 
-## Components
-
-### Frontend
-
-Responsibilities:
-
-* User Interface
-* Dashboard
-* AI Chat Interface
-* Study Planner Interface
-* Analytics Visualization
-
-Technology:
-
-* Stitch-generated UI
-* React
+## Technical Stack
+- **UI/UX View**: Next.js 16 (App Router), Vanilla CSS, responsive layout configurations.
+- **Audio Capture & STT**: Browser native HTML5 `MediaRecorder` API for voice recording and Web Speech `SpeechRecognition` API for live client-side audio transcription.
+- **Integration Layer**: `lemma-sdk` initialized client-side inside the browser.
+- **Grounding Layer**: `client.conversations` and `client.files` endpoints linking to `tutor-agent` and `quiz-generator-agent` definitions inside the pod.
+- **Datastore Layer**: SQLite tables managed via Lemma's datastore records endpoints (`academic_papers`, `flashcards`, `exam_questions`, `user_progress`).
 
 ---
 
-### Lemma Platform
+## Pod Table Schemas
+1. **`academic_papers`**: Stored paper IDs, filenames, titles, file paths, and summaries.
+2. **`flashcards`**: Links card IDs, question prompts, answer solutions, and rating difficulties to `academic_papers.id`.
+3. **`exam_questions`**: Holds generated quiz questions, options, answers, and explanations.
+4. **`user_progress`**: Tracks milestones, manually logged study sessions, and task completion statuses.
 
-Responsibilities:
-
-* Manage Pods
-* Execute Workflows
-* Connect AI Agents
-* Store Learning Data
-
----
-
-### AI Agents
-
-#### Tutor Agent
-
-* Answers student questions
-* Explains concepts
-
-#### Planner Agent
-
-* Creates study schedules
-* Suggests learning goals
-
-#### Quiz Agent
-
-* Generates quizzes
-* Evaluates responses
-
-#### Analytics Agent
-
-* Tracks performance
-* Detects weak areas
-* Generates recommendations
-
----
-
-### Database
-
-Stores:
-
-* User Profiles
-* Study Goals
-* Quiz Results
-* Learning Progress
-* Activity History
-
----
-
-## Future Enhancements
-
-* Voice-based AI Tutor
-* Multi-language support
-* Gamification
-* Peer Learning Communities
-* AI Career Guidance
