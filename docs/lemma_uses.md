@@ -56,3 +56,12 @@ The app utilizes four primary tables provisioned in the Lemma Pod Datastore:
 2. **`flashcards`**: Stores question-answer pairs linked to `academic_papers.id`.
 3. **`exam_questions`**: Stores JSON options, correct answers, and explanations.
 4. **`user_progress`**: Tracks manual study logs and task completion states.
+
+---
+
+## 🚀 Landing Page PDF Upload Behavior
+When deployed on the Lemma platform, the application provides an entry point that handles PDF uploads. Be aware of the difference between the two files:
+- **`landing.html` (Static Root)**: Used for rapid static presentation and marketing display. It has **no active file upload handler**.
+- **`frontend/src/app/page.tsx` (Next.js Application Root)**: Contains a live **"Ready to Study Smarter?"** component positioned above the footer. It features a drag-and-drop file input area linked to the `handleFileUpload` function.
+  - When a PDF is selected, it extracts the document text, pushes the file to the pod's `/knowledge` directory, registers the paper via `lemma.createPaper`, and redirects the user into the active workspace.
+

@@ -1410,71 +1410,32 @@ export default function UnifiedWorkspace() {
               ) : (
                 <>
                   <div>
-                    <span className="text-[10px] uppercase font-extrabold text-[#004ac6] bg-blue-50 px-2.5 py-1 rounded-full">Active Revision Itinerary</span>
-                    <h3 className="font-hanken-title text-xl font-extrabold text-[#191B23] mt-3">Scheduled Study Slots</h3>
+                    <span className="text-[10px] uppercase font-extrabold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">✓ Generated Learning Roadmap</span>
+                    <h3 className="font-hanken-title text-xl font-extrabold text-[#191B23] mt-3">Syllabus Path Milestones</h3>
                     <p className="text-xs text-[#64748B] mt-2 leading-relaxed">
-                      Your customized academic slots synchronized across registered local syllabus references.
+                      Custom structural milestones designed dynamically by Gemini context parsing.
                     </p>
                   </div>
 
-                  <div className="space-y-4 pt-4 border-t border-slate-100">
-                    {[
-                      {
-                        subject: 'Neuroscience',
-                        priority: 'high priority',
-                        title: 'Oscillatory triple-coupling in slow-wave sleep',
-                        date: '2026-06-29',
-                        time: '10:00',
-                        duration: '45 min',
-                        priorityColor: 'bg-red-55/70 text-red-800 border-red-200'
-                      },
-                      {
-                        subject: 'Educational Psychology',
-                        priority: 'medium priority',
-                        title: "Sweller's CLT: Worked-example effect",
-                        date: '2026-06-30',
-                        time: '14:30',
-                        duration: '30 min',
-                        priorityColor: 'bg-amber-55/70 text-amber-800 border-amber-200'
-                      },
-                      {
-                        subject: 'Quantum Mechanics',
-                        priority: 'high priority',
-                        title: "Bell's Inequality & Quantum Cryptography",
-                        date: '2026-07-01',
-                        time: '09:00',
-                        duration: '60 min',
-                        priorityColor: 'bg-red-55/70 text-red-800 border-red-200'
-                      }
-                    ].map((slot, index) => (
-                      <div key={index} className="bg-slate-50 border border-slate-200 rounded-2xl p-5 hover:shadow-sm transition-all flex flex-col md:flex-row justify-between md:items-center gap-4">
-                        <div className="space-y-1.5">
-                          <div className="flex items-center gap-2 flex-wrap">
-                            <span className="text-xs font-black text-slate-800">{slot.subject}</span>
-                            <span className={`text-[9px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded-full border ${slot.priorityColor}`}>
-                              {slot.priority}
-                            </span>
-                          </div>
-                          <p className="text-xs font-bold text-[#191B23]">{slot.title}</p>
+                  <div className="space-y-4 pt-4 border-t border-slate-100 animate-in slide-in-from-bottom duration-300">
+                    {roadmapMilestones.map((m) => (
+                      <div key={m.num} className="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col sm:flex-row gap-4 hover:shadow-sm transition-all">
+                        <div className="w-10 h-10 rounded-xl bg-blue-100 text-[#004ac6] flex items-center justify-center font-black text-sm shrink-0">
+                          {m.num}
                         </div>
-                        <div className="flex items-center gap-3 text-xs text-[#64748B] shrink-0 font-semibold bg-white border border-slate-200 px-4 py-2.5 rounded-xl">
-                          <div className="flex items-center gap-1">
-                            <span className="material-symbols-outlined text-[16px] text-blue-500">calendar_today</span>
-                            <span>{slot.date}</span>
+                        <div className="space-y-1">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <h4 className="font-bold text-xs text-slate-800">{m.title}</h4>
+                            <span className="bg-slate-200/60 text-slate-600 px-2 py-0.5 rounded text-[10px] font-bold">{m.duration}</span>
                           </div>
-                          <div className="flex items-center gap-1 border-l border-slate-200 pl-3">
-                            <span className="material-symbols-outlined text-[16px] text-blue-500">schedule</span>
-                            <span>{slot.time}</span>
-                          </div>
-                          <div className="flex items-center gap-1 border-l border-slate-200 pl-3 text-[#004ac6] font-bold">
-                            <span>{slot.duration}</span>
-                          </div>
+                          <p className="text-[11px] text-[#434655] leading-relaxed">{m.desc}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                 </>
               )}
+
             </div>
           )}
 

@@ -52,3 +52,11 @@ Brainzy uses a fluid grid structure scaling from small phones to large desktop s
   - Canvas panels: `p-4 md:p-8 rounded-2xl md:rounded-3xl`
   - Desk integration: Automatically fits within the parent iframe on Lemma.work.
 
+---
+
+## 📂 Landing Page PDF Upload Design
+The landing page includes two distinct presentations regarding document uploads:
+1. **Static Preview (`landing.html`)**: Acts as a marketing layout with no functional upload controls.
+2. **Next.js App Landing Page (`frontend/src/app/page.tsx`)**: Integrates a fully functional drag-and-drop / select-to-upload PDF component directly above the footer (themed with a dashed academic blue border, file upload indicator states, and active grounding status alerts).
+
+
