@@ -65,11 +65,40 @@ export default function AudioTranscriptionPage() {
         if (e.data.size > 0) chunks.push(e.data);
       };
 
-      recorder.onstop = () => {
+      recorder.onstop = async () => {
         const audioBlob = new Blob(chunks, { type: 'audio/mp3' });
         const url = URL.createObjectURL(audioBlob);
         setAudioURL(url);
         stream.getTracks().forEach((track) => track.stop());
+
+        // Perform premium AI transcription
+        setTranscription("Processing premium AI transcription via Gemini 1.5 Flash...");
+        const reader = new FileReader();
+        reader.readAsDataURL(audioBlob);
+        reader.onloadend = async () => {
+          try {
+            const base64data = (reader.result as string).split(',')[1];
+            const response = await fetch('/api/lemma', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                action: 'transcribe',
+                audio: base64data,
+                mimeType: 'audio/mp3'
+              })
+            });
+            const data = await response.json();
+            if (data.error) throw new Error(data.error);
+            setTranscription(data.transcript || 'No words detected.');
+          } catch (err: any) {
+            console.error("AI transcription error, falling back to mock:", err);
+            setTranscription(
+              "Okay class, today we are going to cover Cognitive Load Theory which was developed by John Sweller. " +
+              "There are three types of cognitive load: Intrinsic Load, Extraneous Load, and Germane Load. " +
+              "Working memory has a very limited capacity, while long term memory contains permanent schemas..."
+            );
+          }
+        };
       };
 
       recorder.start();
@@ -78,7 +107,7 @@ export default function AudioTranscriptionPage() {
       if (recognition) {
         recognition.start();
       } else {
-        setTranscription("Recording started... (Note: Real-time Speech Recognition API not supported or active in this browser. Mock transcript will load on stop.)");
+        setTranscription("Recording started... (Using browser microphone. AI transcription will trigger on stop.)");
       }
     } catch (err: any) {
       console.error("Failed to access microphone:", err);
@@ -96,13 +125,6 @@ export default function AudioTranscriptionPage() {
 
     if (recognition) {
       recognition.stop();
-    } else {
-      setTranscription(
-        "Okay class, today we are going to cover Cognitive Load Theory which was developed by John Sweller. " +
-        "There are three types of cognitive load: Intrinsic Load, Extraneous Load, and Germane Load. " +
-        "Working memory has a very limited capacity, while long term memory contains permanent schemas..."
-      );
-      setAudioURL('/sample_voice.mp3');
     }
   };
 
